@@ -1,5 +1,5 @@
-#include	"Training.h"
-#include	"TrainingType.h"
+#include	<Training.h>
+#include	<TrainingType.h>
 
 wxString Training::ToString(bool includeDate, PTUnit const &unit)
 {

@@ -1,4 +1,4 @@
-#include	"Week.h"
+#include	<Week.h>
 #include	<wx/log.h>
 
 wxString Week::ToString()
@@ -52,4 +52,9 @@ void Week::GetDistance( double &minDist, double &maxDist, double &avgDist, PTUni
         maxDist += max1;
         avgDist += avg1;
     }
+}
+
+void Week::Sort()
+{
+    training.sort(Training::compareDate);
 }

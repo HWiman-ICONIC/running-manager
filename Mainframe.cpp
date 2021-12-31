@@ -1,6 +1,8 @@
-#include	"Mainframe.h"
+#include	<Mainframe.h>
 #include	<wx/textdlg.h>
 #include <wx/aboutdlg.h>
+//#include    <sample_128.xpm>
+//#include    <sample_32.xpm>
 
 // the event tables connect the wxWidgets events with the functions (event
 // handlers) which process them. It can be also done at run-time, but for the
@@ -21,8 +23,19 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
     this->installationDirectory = installationDirectory;
     cpHelp = NULL;
     auiManager = NULL;
-    // set the frame icon
-    SetIcon(wxICON(sample));
+	SetIcon(wxICON(sample));
+/*    // set the frame icon
+    wxIcon sampleIcon;
+//    #if __WXWINDOWS__
+//    sampleIcon = wxICON(sample);
+//    #else
+    sampleIcon = wxIcon(wxICON(sample_32));
+    //  #endif
+    SetIcon(sampleIcon);
+
+#ifdef __WXGTK__
+    SetFont(GetFont().MakeSmaller());
+#endif*/
 
 #if wxUSE_MENUS
     // create a menu bar
@@ -37,7 +50,7 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
     //fileMenu->Append(Minimal_Create_TrainingProgram, _("Create training program\tCtrl+T"), _("Create a training program"));
     fileMenu->Append(Minimal_Save_Calendar, _("Save training calendar...\tCtrl+S"),_("Save training plan to calendar file (*.csv)"));
 
-    fileMenu->Append(Minimal_Zone, _("Set pulse...\tCtrl+Z"), _("Set new lactate threshold pulse"));
+    //fileMenu->Append(Minimal_Zone, _("Set pulse...\tCtrl+Z"), _("Set new lactate threshold pulse"));
     fileMenu->AppendSeparator();
     fileMenu->Append(Minimal_Quit, "E&xit\tAlt-X", "Quit this program");
     /*wxMenu *unitMenu = new wxMenu();
@@ -47,6 +60,11 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
 
 
     */
+    wxMenu *userMenu = new wxMenu;
+    userMenu->Append(Minimal_Create_User, _("Create user...\tCtrl+N"), _("Create a new user"));
+    userMenu->Append(Minimal_Select_User, _("Select user...\tCtrl+U"), _("Select a user"));
+    userMenu->Append(Minimal_Delete_User, _("Delete user...\tCtrl+X"), _("Delete a user"));
+
     wxMenu *perspectiveMenu = new wxMenu;
     perspectiveMenu->Append(Minimal_Load_Perspective, _("Load...\tCtrl+L"), _("Apply a saved window layout"));
     perspectiveMenu->Append(Minimal_Save_Perspective, _("Save...\tCtrl+P"), _("Saved current window layout"));
@@ -56,8 +74,12 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
     // now append the freshly created menu to the menu bar...
     wxMenuBar *menuBar = new wxMenuBar();
     menuBar->Append(fileMenu, "&File");
+    menuBar->Append(userMenu, "&User");
     menuBar->Append(perspectiveMenu, "&Perspective");
     menuBar->Append(helpMenu, "&Help");
+
+    //wxAuiNotebook* ctrl = new wxAuiNotebook(this, wxID_ANY);
+    //ctrl->AddPage(new wxWindow(ctrl, wxID_ANY), _("
 
     // ... and attach this menu bar to the frame
     SetMenuBar(menuBar);
@@ -91,13 +113,17 @@ MyFrame::~MyFrame()
 
 void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
+    // true is to force the frame to close
     Close(true);
+    //Close(false);
 }
 
 void MyFrame::OnClose( wxCloseEvent &WXUNUSED(e) )
 {
     if (auiManager) {
         wxConfig::Get()->Write("LastPerspective", GetAuiManager()->SavePerspective());
+//        PopEventHandler();
+//        auiManager = NULL;
     }
     Destroy();
 }
@@ -111,7 +137,11 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
     info.AddDeveloper(wxT("Håkan Wiman"));
     wxString description = wxString::Format(_("The training plans and concepts are based on the book \"80/20 Running\" by Matt Fitzgerald (2014).\nTo get the most out of %s you are strongly recommended to buy a copy of this book!\n\n%s"), GetTitle(),wxGetOsDescription());
     info.SetDescription(description);
+#ifdef wxHAS_IMAGES_IN_RESOURCES
     info.SetIcon(wxIcon(wxString("aaaaaaaa"),wxBITMAP_TYPE_ICO_RESOURCE,128,128));
+#else
+    info.SetIcon(wxIcon(wxICON(sample_128)));
+#endif
     wxAboutBox(info);
 }
 

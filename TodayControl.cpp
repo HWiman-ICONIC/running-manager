@@ -1,13 +1,16 @@
-#include	"TodayControl.h"
+#include	<TodayControl.h>
 #include	<wx/sizer.h>
-#include	"TrainingType.h"
-#include	"Zone.h"
-#include	"ZoneGrid.h"
+#include	<TrainingType.h>
+#include	<Zone.h>
+#include	<ZoneGrid.h>
 //#include	<sgis/xml/HtmlTable.h>
 
 TodayControl::TodayControl(wxWindow *pParent, Plan &plan, wxDateTime &day, PTUnit const &unit) :
     wxGrid( pParent, wxID_ANY )
 {
+#ifdef __WXGTK__
+    SetLabelFont(GetLabelFont().MakeSmaller());
+#endif
     cpLastPlan = NULL;
     Update(plan, day, unit, 0);
 }
@@ -27,7 +30,7 @@ void TodayControl::Update(Plan &plan, wxDateTime const &day, PTUnit const &unit,
     if (trainings.size() == 0) {
         int nRows = 2;
         int nCols = 1;
-        if ( this->GetNumberCols() && GetNumberRows() ) {
+        if ( GetNumberCols() && GetNumberRows() ) {
             if (GetNumberCols() > nCols) {
                 DeleteCols(0,GetNumberCols() - nCols);
             }

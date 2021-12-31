@@ -1,6 +1,6 @@
 #pragma once
 
-#include	"Plan.h"
+#include	<Plan.h>
 #include	<wx/html/htmlwin.h>
 #include	<wx/datetime.h>
 #include	<wx/grid.h>

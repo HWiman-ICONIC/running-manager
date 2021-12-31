@@ -1,4 +1,4 @@
-#include	"LongRun.h"
+#include	<LongRun.h>
 #include	<wx/intl.h>
 
 LongRun::LongRun()

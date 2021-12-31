@@ -1,7 +1,7 @@
 #pragma once
 
 #include	<wx/grid.h>
-#include	"Plan.h"
+#include	<Plan.h>
 
 class TrainingProgramGrid : public wxGrid {
 public:

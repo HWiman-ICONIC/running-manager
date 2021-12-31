@@ -3,8 +3,8 @@
 #include	<wx/grid.h>
 #include	<wx/datetime.h>
 #include	<vector>
-#include	"Defines.h"
-#include	"Zone.h"
+#include	<Defines.h>
+#include	<Zone.h>
 
 class ZoneGrid : public wxGrid {
 public:

@@ -1,4 +1,4 @@
-#include	"Intensity.h"
+#include	<Intensity.h>
 
 Intensity::Intensity( int intensity ) :
     intensity(intensity)

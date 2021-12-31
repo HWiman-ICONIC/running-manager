@@ -1,7 +1,7 @@
 #pragma once
 
-#include	"Defines.h"
-#include	"Intensity.h"
+#include	<Defines.h>
+#include	<Intensity.h>
 #include	<wx/string.h>
 #include	<vector>
 
@@ -113,11 +113,11 @@ static TrainingType gTrainingType[] = {
     TrainingType(LRFF, _("Long Run Fast Finish"), _("Fast finish at end of long run.\nDone late in training cycle to increase fatigue resistance."),
                  wxString("1,\
 			1,1,0.5,2,8.5,3,1,-1,\
-			2,1,0.5,2,8.5,3,1,-1,\
-			3,1,0.5,2,8.5,3,1,-1,\
-			4,1,0.5,2,8.5,3,1,-1,\
-			5,1,0.5,2,8.5,3,1,-1,\
-			6,1,0.5,2,8.5,3,1,-1")),
+			2,1,0.5,2,10.5,3,1,-1,\
+			3,1,0.5,2,12,3,1.5,-1,\
+			4,1,0.5,2,14,3,1.5,-1,\
+			5,1,0.5,2,15.5,3,2,-1,\
+			6,1,0.5,2,17.5,3,2,-1")),
 
     TrainingType(SPR, _("Speed Play Run"), _("Cross between foundation run and interval run.\nEasier than interval runs."),
                  wxString("2,\
@@ -182,11 +182,19 @@ static TrainingType gTrainingType[] = {
 			3,1,5,2,5,2X,5,1,1,2,2X,4,3,1,2,1X,3,10,1,2,2X,4,3,1,2,2X,5,1,1,2,1X,1,5,-1,\
 			4,1,5,2,5,2X,5,1.5,1,2.5,2X,4,5,1,2,1X,3,10,1,2,2X,4,5,1,2,2X,5,1.5,1,2,1X,1,5,-1")),
 
-    TrainingType(HM, _("Half Marathon"), _("Competition"), wxString("-1")),
+    TrainingType(HM, _("Half Marathon"), _("Competition"),
+                 wxString("0,\
+			1,3,21.0975,-1")),
 
-    TrainingType(M, _("Marathon"), _("Competition"), wxString("-1")),
+    TrainingType(M, _("Marathon"), _("Competition"),
+                 wxString("0,\
+			1,3,42.195,-1")),
 
-    TrainingType(KM10, _("10 kilometer competition"), _("Competition"), wxString("-1")),
+    TrainingType(KM10, _("10 kilometer competition"), _("Competition"),
+                 wxString("0,\
+			1,3,10,-1")),
 
-    TrainingType(KM5, _("5 kilometer competition"), _("Competition"), wxString("-1")),
+    TrainingType(KM5, _("5 kilometer competition"), _("Competition"),
+                 wxString("0,\
+			1,3,5,-1")),
 };

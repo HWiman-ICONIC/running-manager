@@ -1,6 +1,6 @@
 #pragma once
 
-#include	"Defines.h"
+#include	<Defines.h>
 #include	<wx/datetime.h>
 
 struct Training {
@@ -10,4 +10,7 @@ struct Training {
     wxString ToString(bool includeDate, PTUnit const &unit);
     void GetTime(wxTimeSpan &minTime, wxTimeSpan &maxTime, wxTimeSpan &avgSpan );
     void GetDistance( double &minDist, double &maxDist, double &avgDist, PTUnit const &unit );
+    static bool compareDate(const Training & a, const Training & b) {
+        return a.date < b.date;
+    }
 };

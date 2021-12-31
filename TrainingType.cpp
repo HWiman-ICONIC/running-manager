@@ -1,4 +1,4 @@
-#include	"TrainingType.h"
+#include	<TrainingType.h>
 #include	<wx/tokenzr.h>
 #include    <boost/make_shared.hpp>
 

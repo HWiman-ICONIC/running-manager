@@ -1,6 +1,6 @@
 #pragma once
 
-#include	"Defines.h"
+#include	<Defines.h>
 #include	<boost/shared_ptr.hpp>
 #include	<wx/datetime.h>
 #include	<list>

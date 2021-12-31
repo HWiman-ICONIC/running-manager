@@ -1,6 +1,6 @@
 #pragma once
 
-#include	"Defines.h"
+#include	<Defines.h>
 #include	<wx/frame.h>
 #include    <wx/aui/framemanager.h>
 #include	<wx/menu.h>

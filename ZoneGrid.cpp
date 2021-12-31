@@ -1,6 +1,6 @@
-#include	"ZoneGrid.h"
-#include	"Defines.h"
-#include	"Zone.h"
+#include	<ZoneGrid.h>
+#include	<Defines.h>
+#include	<Zone.h>
 #include	<wx/log.h>
 
 BEGIN_EVENT_TABLE(ZoneGrid, wxGrid)
@@ -10,6 +10,9 @@ END_EVENT_TABLE()
 ZoneGrid::ZoneGrid(wxWindow *pParent) :
     wxGrid(pParent, wxID_ANY)
 {
+#ifdef __WXGTK__
+    SetLabelFont(GetLabelFont().MakeSmaller());
+#endif
     SetName("ZoneGrid");
     CreateGrid(6,5);
     SetColLabelValue(0,_("Description"));
@@ -30,9 +33,9 @@ ZoneGrid::ZoneGrid(wxWindow *pParent) :
             SetCellValue(i,4,"0:00 min/km");
             SetCellBackgroundColour(i,4,gIntensityColor[gZoneIntensity[i]]);
         } else {
-            SetCellValue(i,3,"m:ss min/km");
+            SetCellValue(i,3,"Enter your pace: m:ss min/km");
             SetCellBackgroundColour(i,3,wxColour(200,200,200));
-            SetCellValue(i,4,"m:ss min/km");
+            SetCellValue(i,4,"Enter your pace: m:ss min/km");
             SetCellBackgroundColour(i,4,wxColour(200,200,200));
         }
 
@@ -40,6 +43,10 @@ ZoneGrid::ZoneGrid(wxWindow *pParent) :
             SetCellBackgroundColour(i,j,gIntensityColor[gZoneIntensity[i]]);
         }
     }
+    HideRow(0);
+    SetToolTip(_("Entering pace is optional. If you do enter pace you \nget both distance and time for each training."));
+    AutoSize();
+    Fit();
 }
 
 
@@ -82,7 +89,7 @@ bool ZoneGrid::UpdatePace( wxTimeSpan const &pace, bool isMin, int zoneLevel, PT
     int row = zoneLevel;
     wxString s;
     if (pace.IsNull()) {
-        s = wxString::Format("m:ss min/%s", gUnit[unit]);
+        s = wxString::Format("Enter your pace: m:ss min/%s", gUnit[unit]);
         SetCellBackgroundColour(row,col,wxColour(200,200,200));
     } else {
         s = Zone::GetTimeString( pace, unit );

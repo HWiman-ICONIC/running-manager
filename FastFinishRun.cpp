@@ -1,4 +1,4 @@
-#include	"FastFinishRun.h"
+#include	<FastFinishRun.h>
 #include	<wx/intl.h>
 
 FastFinishRun::FastFinishRun()

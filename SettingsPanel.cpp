@@ -1,7 +1,8 @@
-#include	"SettingsPanel.h"
+#include	<SettingsPanel.h>
 #include	<wx/sizer.h>
 #include	<wx/radiobox.h>
 #include	<wx/spinctrl.h>
+#include    <wx/statbox.h>
 
 wxBEGIN_EVENT_TABLE(CreateTrainingProgramDialog, wxPanel)
 //	EVT_BUTTON(wxID_OK, CreateTrainingProgramDialog::OnCreate)
@@ -24,6 +25,12 @@ CreateTrainingProgramDialog::CreateTrainingProgramDialog(wxWindow *pParent, PTUn
     //distance->SetBackgroundColour(wxColour(255,255,255));
     distance->SetSelection((int)adistance);
     distance->SetToolTip(_("Select your race distance"));
+
+    Connect(distance->GetId(), -1, wxEVT_COMMAND_RADIOBUTTON_SELECTED,
+            (wxObjectEventFunction)
+            (wxEventFunction)
+            (wxCommandEventFunction)&CreateTrainingProgramDialog::OnDistanceSelected);
+
     pRadioSizer->Add(distance, 1, wxALL|wxEXPAND, 2);
 
     levels.Add(gLevel[PTL_LOW]);
@@ -67,7 +74,7 @@ CreateTrainingProgramDialog::CreateTrainingProgramDialog(wxWindow *pParent, PTUn
     pRadioSizer->Add(btnSizer, 0, wxALL, 2);
 
     createButton = new wxButton(this, Minimal_Create_TrainingProgram, _("&Update"), wxDefaultPosition, wxDefaultSize, 0);
-    createButton->SetBackgroundColour(wxColour(255,255,255));
+    //createButton->SetBackgroundColour(wxColour(255,255,255));
     createButton->SetToolTip(_("Click to generate training program"));
     btnSizer->Add(createButton, 1, wxCENTER|wxEXPAND);
 
@@ -76,8 +83,14 @@ CreateTrainingProgramDialog::CreateTrainingProgramDialog(wxWindow *pParent, PTUn
     paceButton->SetToolTip(_("Optionally set pace per zone"));
     btnSizer->Add(paceButton, 1, wxCENTER|wxEXPAND);*/
 
+    wxButton *exportButton = new wxButton(this, Minimal_Save_Calendar, _("&Export..."), wxDefaultPosition, wxDefaultSize, 0);
+    //createButton->SetBackgroundColour(wxColour(255,255,255));
+    exportButton->SetToolTip(_("Click to export the program to calendar"));
+    btnSizer->Add(exportButton, 1, wxCENTER|wxEXPAND);
+
+
     wxButton *helpButton = new wxButton(this, Minimal_Help, _("&Help..."), wxDefaultPosition, wxDefaultSize, 0);
-    helpButton->SetBackgroundColour(wxColour(255,255,255));
+    //helpButton->SetBackgroundColour(wxColour(255,255,255));
     helpButton->SetToolTip(_("Show help"));
     btnSizer->Add(helpButton, 0, wxCENTER|wxEXPAND);
 
@@ -85,6 +98,11 @@ CreateTrainingProgramDialog::CreateTrainingProgramDialog(wxWindow *pParent, PTUn
 //	pParentSizer->Add(btnSizer);
     SetSizerAndFit( pParentSizer );
 //	this->SetBackgroundColour(wxColour(255.0, 128.0, 128.0));
+}
+
+void CreateTrainingProgramDialog::OnDistanceSelected( wxCommandEvent &e )
+{
+    wxLogMessage(_("You selected %d"), e.GetSelection());
 }
 
 bool CreateTrainingProgramDialog::TransferDataFromWindow()

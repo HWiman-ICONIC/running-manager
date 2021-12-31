@@ -2,7 +2,7 @@
 
 #include	<list>
 #include	<wx/string.h>
-#include	"Training.h"
+#include	<Training.h>
 
 struct Week {
     Week() {
@@ -16,6 +16,8 @@ struct Week {
     void GetTime( wxTimeSpan &minTime, wxTimeSpan &maxTime, wxTimeSpan &avgSpan );
 
     void GetDistance( double &minDist, double &maxDist, double &avgDist, PTUnit const &unit );
+
+    void Sort();
 
     int number;
     PTPhase cPhase;

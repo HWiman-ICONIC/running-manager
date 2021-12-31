@@ -44,6 +44,7 @@ add_compile_definitions(WXUSINGDLL)
 # Add source to this project's executable.
 set(SOURCES
 "RunningManager.cpp" 
+"Calculator.cpp"
 "Converter.cpp" 
 "Event.cpp" 
 "FastFinishRun.cpp" 
@@ -60,6 +61,7 @@ set(SOURCES
 "User.cpp" 
 "WebView.cpp" 
 "Week.cpp" 
+"WeekDay.cpp" 
 "Zone.cpp" 
 "ZoneGrid.cpp"
 )
