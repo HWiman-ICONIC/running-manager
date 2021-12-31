@@ -1,4 +1,4 @@
-#include	"User.h"
+#include	<User.h>
 
 
 std::map<wxString,UserPtr> User::cUserMap;
@@ -10,8 +10,15 @@ User::User() :
     distance(PTD_10KM),
     pulse(160),
     use_pace(false),
-    raceDate(wxDateTime::Today())
+    raceDate(wxDateTime::Today()+wxDateSpan(0,0,11)),
+    calculatorSpeedMin(5),
+    calculatorSpeedSec(0)
 {
+}
+
+User::User(UserPtr pOther)
+{
+    *this = *pOther;
 }
 
 std::map<wxString,UserPtr> &User::GetUsers()

@@ -2,7 +2,7 @@
 
 #include	<vector>
 #include	<map>
-#include	"Week.h"
+#include	<Week.h>
 #include	<wx/textfile.h>
 
 struct Plan {
@@ -11,13 +11,14 @@ struct Plan {
     PTLevel level;
     PTUnit outUnit;
     wxDateTime date;
-    wxTimeSpan programLength;
+    wxDateSpan programLength;
     wxDateTime startTime;
     std::map<int,wxString> distanceString;
     wxTextFile textFile;
+    wxArrayInt weekDayOrder;
 
     Plan();
-    Plan(PTDistance distance, PTLevel level, wxDateTime date);
+    Plan(PTDistance distance, PTLevel level, wxDateTime date, wxArrayInt weekDayOrder);
 
     void CreatePlan();
     void SetPlan( wxString const &s );
@@ -27,4 +28,5 @@ struct Plan {
     void CreateProgram(PTUnit const &unit);
     void Print();
     bool SaveCsv( wxString const &filename );
+    std::vector<std::vector<int>> GetTrainingTypePerWeekDay();
 };

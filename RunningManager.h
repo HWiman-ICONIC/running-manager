@@ -8,6 +8,7 @@
 #include	"TodayControl.h"
 #include	"ZoneGrid.h"
 #include	"User.h"
+#include	<WeekDay.h>
 #include	<wx/app.h>
 #include	<wx/config.h>
 #include	<wx/wxhtml.h>
@@ -55,13 +56,17 @@ private:
     void OnUpdateLoadPerspective(wxUpdateUIEvent& e);
     void OnSavePerspective(wxCommandEvent& e);
     void OnSetPace(wxCommandEvent& WXUNUSED(e));
+    void OnCreateUser( wxCommandEvent &WXUNUSED(e) );
+    void OnSelectUser( wxCommandEvent &WXUNUSED(e) );
+    void OnDeleteUser( wxCommandEvent &WXUNUSED(e) );
 
     void OnDateSelected(wxCommandEvent& e);
 
     Plan* plan;
     wxString lastDir;
     MyFrame* frame;
-    //	wxConfig *configuration;
+    int cMajorVersion;
+    int cMinorVersion;
 
     ZoneGrid* zoneGrid;
     wxGrid* trainingTypeGrid;
@@ -69,6 +74,7 @@ private:
 //    boost::shared_ptr<wxAuiManager> auiManager;
     TrainingProgramGrid* trainingProgram;
     TodayControl* today;
+    WeekDay *weekDayControl;
     wxHtmlHelpWindow* cpHelpWindow;
     wxHtmlHelpController* cpHelpController;
     std::map<wxString, wxString> vPerspectives;

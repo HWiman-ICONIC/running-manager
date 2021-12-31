@@ -5,6 +5,7 @@
 #include	"WebView.h"
 #include	"TodayControl.h"
 #include	"TrainingType.h"
+#include    <Calculator.h>
 #include	"Event.h"
 #include	<vector>
 #include	<list>
@@ -29,9 +30,10 @@
 #include	<wx/textdlg.h>
 #include    <wx/aui/framemanager.h>
 #include	<wx/fs_zip.h>
+#include	<wx/treectrl.h>
 
 #ifndef wxHAS_IMAGES_IN_RESOURCES
-#include "../sample.xpm"
+#include "sample_16.xpm"
 #endif
 
 class MyFrame;
@@ -43,15 +45,19 @@ IMPLEMENT_APP(MyApp)
 wxBEGIN_EVENT_TABLE(MyApp, wxApp)
     EVT_BUTTON(Minimal_Create_TrainingProgram, MyApp::OnCreateTrainingProgram)
     EVT_MENU(Minimal_Save_Calendar, MyApp::OnSaveCalendar)
+    EVT_BUTTON(Minimal_Save_Calendar, MyApp::OnSaveCalendar)
     EVT_UPDATE_UI(Minimal_Save_Calendar, MyApp::OnUpdateSaveCalendar)
     EVT_MENU(Minimal_Load_Perspective, MyApp::OnLoadPerspective)
+    EVT_MENU(Minimal_Create_User, MyApp::OnCreateUser)
+    EVT_MENU(Minimal_Select_User, MyApp::OnSelectUser)
+    EVT_MENU(Minimal_Delete_User, MyApp::OnDeleteUser)
     EVT_UPDATE_UI(Minimal_Load_Perspective, MyApp::OnUpdateLoadPerspective)
     EVT_MENU(Minimal_Delete_Perspective, MyApp::OnDeletePerspective)
     EVT_UPDATE_UI(Minimal_Delete_Perspective, MyApp::OnUpdateLoadPerspective)
     EVT_MENU(Minimal_Save_Perspective, MyApp::OnSavePerspective)
 //	EVT_MENU(Minimal_Unit_Km, MyApp::OnUnitKm)
 //	EVT_MENU(Minimal_Unit_Miles, MyApp::OnUnitMiles)
-    EVT_UPDATE_UI_RANGE(Minimal_Unit_Km, Minimal_Unit_Miles, MyApp::OnUpdateUnit)
+    EVT_UPDATE_UI_RANGE(Minimal_Unit_Km,Minimal_Unit_Miles, MyApp::OnUpdateUnit)
     EVT_MENU(Minimal_Zone, MyApp::OnZone)
 //	EVT_BUTTON(wxID_OK, MyApp::OnCreate)
     EVT_BUTTON(Minimal_Set_Pace, MyApp::OnSetPace)
@@ -126,14 +132,14 @@ MyApp::~MyApp()
 {
 }
 
-bool MyApp::ReadPerspective(int const& n)
+bool MyApp::ReadPerspective(int const &n)
 {
     wxString perspectiveEntry;
     wxString perspective;
     wxString code;
 
     perspectiveEntry = wxString::Format("PerspectiveName%d", n);
-    wxConfigBase* configuration = wxConfig::Get();
+    wxConfigBase *configuration = wxConfig::Get();
     configuration->Read(perspectiveEntry, &perspective, wxEmptyString);
     if (perspective.IsEmpty()) {
         return false;
@@ -158,10 +164,17 @@ void MyApp::OnCreateTrainingProgram(wxCommandEvent& WXUNUSED(event))
 
     //	int answer = ::wxMessageBox(_("You have chosen to create a training plan for"));
 
-    if (plan != NULL) {
+    wxArrayInt weekDayOrder;
+    if (weekDayControl) {
+        weekDayOrder = weekDayControl->GetWeekdayOrder();
+    }
+    if (plan != NULL ) {
+        if (!weekDayControl) {
+            weekDayOrder = plan->weekDayOrder;
+        }
         delete plan;
     }
-    plan = new Plan(trainingDialog->GetDistance(), trainingDialog->GetLevel(), trainingDialog->GetDate());
+    plan = new Plan(trainingDialog->GetDistance(), trainingDialog->GetLevel(), trainingDialog->GetDate(), weekDayOrder);
     plan->CreateProgram(trainingDialog->GetUnit());
     UserPtr pUser = User::GetUser();
     pUser->unit = trainingDialog->GetUnit();
@@ -175,6 +188,7 @@ void MyApp::OnCreateTrainingProgram(wxCommandEvent& WXUNUSED(event))
     UpdateCurrentDate(toDay, trainingDialog, 0);
     //	today->Update(*plan, toDay, unit);
     GetAuiManager()->GetPane(trainingProgram).BestSize(trainingProgram->GetSize()).Caption(plan->ToString());
+    weekDayControl->Update(*plan);
     //	trainingProgram->MakeCellVisible(trainingProgram->todayLine,0);
 
     UpdatePulse();
@@ -197,7 +211,22 @@ void MyApp::UpdatePulse()
 
 bool MyApp::OnInit()
 {
-    if (!wxApp::OnInit()) {
+    wxInitAllImageHandlers();
+//#ifdef __WXGTK__
+//
+//
+//
+//
+//   GValue value = {0,};
+//
+//   g_value_init(&value, G_TYPE_STRING); /* value type initilization, we need string value */
+//   g_value_set_string(&value, "Sans 8"); /* put font description here (value of the value:) */
+//   g_object_set_property(G_OBJECT(gtk_settings_get_default()), "gtk-font-name", &value); /* setting the property */
+//
+//      g_value_unset(&value);    /* cleaning up */
+//#endif // __WXGTK__
+
+    if ( !wxApp::OnInit() ) {
         return false;
     }
 
@@ -241,12 +270,42 @@ bool MyApp::OnInit()
         wxString sRaceDate;
         configuration->Read(entry, &sRaceDate, wxDateTime::Today().FormatISODate());
         pUser->raceDate.ParseISODate(sRaceDate);
+
+        entry = user + wxString("/CalcSpeedMin");
+        configuration->Read(entry, &(pUser->calculatorSpeedMin), 5);
+
+        entry = user + wxString("/CalcSpeedSec");
+        configuration->Read(entry, &(pUser->calculatorSpeedSec), 0);
     }
+
+    wxArrayInt weekDayOrder;
+    for (int i=0; i<7; i++) {
+        weekDayOrder.Add(i);
+    }
+    wxString sWeekDay;
+    configuration->Read("WeekDayOrder", &sWeekDay, wxEmptyString);
+    wxStringTokenizer tokenizer2(sWeekDay, ";");
+    int i=0;
+    while (tokenizer2.HasMoreTokens()) {
+        wxString weekDay = tokenizer2.GetNextToken();
+        unsigned long uLong;
+        if (!weekDay.ToULong(&uLong)) {
+            break;
+        }
+        weekDayOrder[i++]=(int) uLong;
+    }
+
     wxString fullscreen;
     configuration->Read("Fullscreen", &fullscreen, wxEmptyString);
     configuration->Read("LastDir", &lastDir, wxEmptyString);
     configuration->Read("LastUser", &users, wxEmptyString);
-    pUser = User::GetUser(users);
+
+    int lastMajorVersion;
+    int lastMinorVersion;
+    configuration->Read("LastMajorVersion", &lastMajorVersion, 0);
+    configuration->Read("LastMinorVersion", &lastMinorVersion, 0);
+
+    pUser = User::GetUser( users );
     if (!pUser) {
         pUser = User::GetUser(wxString("Default"));
         if (!pUser) {
@@ -262,13 +321,25 @@ bool MyApp::OnInit()
     }
 
     configuration->Read("LastPerspective", &lastPerspective, wxEmptyString);
+    bool recreatePerspectives = false;
+    if (lastMajorVersion!=cMajorVersion || lastMinorVersion != cMinorVersion) {
+        if ( lastMajorVersion == 0 ) {
+            wxLogMessage(_("Welcome to RunningManager!\n\nFill in race distance, race date and intensity and click Update to generate your training program!\n\nGo to Perspective->Load and select the \"Default\" perspective to see all information."));
+        }
+        lastMajorVersion = cMajorVersion;
+        lastMinorVersion = cMinorVersion;
+        configuration->Write("LastMajorVersion", cMajorVersion);
+        configuration->Write("LastMinorVersion", cMinorVersion);
+        lastPerspective = wxString("Create");
+        recreatePerspectives = true;
+    }
 
     boost::shared_array<Zone> vZoneMap = Zone::GetZoneMap();
     for (int i = 0; i < 6; i++) {
         vZoneMap[i] = gZoneMap[i];
     }
 
-    frame = new MyFrame("RunningManager v1.5", wxFileName::GetCwd());
+    frame = new MyFrame("RunningManager v1.7", wxFileName::GetCwd());
     frame->SetAuiManager(boost::make_shared<wxAuiManager>());
     frame->SetBackgroundColour(wxColour(255, 255, 255));
     frame->Maximize();
@@ -278,7 +349,12 @@ bool MyApp::OnInit()
 
     wxSize screenSize = ::wxGetDisplaySize();
 
-    wxBitmap icon(wxIcon(wxString("aaaaaaaa")));
+    wxBitmap icon;
+#ifdef wxHAS_IMAGES_IN_RESOURCES
+    icon = wxBitmap(wxIcon(wxString("aaaaaaaa")));
+#else
+    icon = wxBitmap(wxIcon(wxICON(sample_16)));
+#endif
     wxAuiPaneInfo commonInfo;
     commonInfo.MaximizeButton(true).Icon(icon).MinimizeButton(true).CloseButton(true);
 
@@ -289,24 +365,29 @@ bool MyApp::OnInit()
         zoneGrid->UpdatePulse(pUser->pulse);
         ReadPaces(userName);
 
-        GetAuiManager()->AddPane(zoneGrid, wxAuiPaneInfo(commonInfo).Name("Zones").Top().Layer(1).Caption(_("Zones")));
+//       GetAuiManager()->AddPane(zoneGrid, wxAuiPaneInfo(commonInfo).Name("Zones").Top().Layer(1).Caption(_("Zones")));
 
-        zoneGrid->AutoSize();
-        GetAuiManager()->GetPane(zoneGrid).BestSize(zoneGrid->GetSize());
+//       zoneGrid->AutoSize();
+//       GetAuiManager()->GetPane(zoneGrid).BestSize(zoneGrid->GetSize());
     }
 
     trainingTypeGrid = new wxGrid(frame, wxID_ANY);
-    GetAuiManager()->AddPane(trainingTypeGrid, wxAuiPaneInfo(commonInfo).Name("TrainingType").Right().Layer(2).Caption(_("Training types")));
-    trainingTypeGrid->CreateGrid(MIR + 1, 1);
-    trainingTypeGrid->SetColLabelValue(0, _("Description"));
+//    GetAuiManager()->AddPane(trainingTypeGrid, wxAuiPaneInfo(commonInfo).Name("TrainingType").Right().Layer(2).Caption(_("Training types")));
+#ifdef __WXGTK__
+    trainingTypeGrid->SetLabelFont(trainingTypeGrid->GetLabelFont().MakeSmaller());
+#endif
+    trainingTypeGrid->CreateGrid(KM5+1,1);
+    trainingTypeGrid->SetColLabelValue(0,_("Description"));
     trainingTypeGrid->SetRowLabelSize(192);
-    for (int i = 0; i <= MIR; i++) {
-        trainingTypeGrid->SetRowLabelValue(i, gTrainingType[i].shortName);
-        trainingTypeGrid->SetCellValue(i, 0, gTrainingType[i].description);
-        trainingTypeGrid->SetCellBackgroundColour(i, 0, gIntensityColor[gTrainingIntensity[i]]);
+    for (int i=0; i<=KM5; i++) {
+        trainingTypeGrid->SetRowLabelValue(i,gTrainingType[i].shortName);
+        trainingTypeGrid->SetCellValue(i,0,gTrainingType[i].description);
+        trainingTypeGrid->SetCellBackgroundColour(i,0,gIntensityColor[gTrainingIntensity[i]]);
+    }
+    for (int i=MIR+1; i<=KM5; i++) {
+        trainingTypeGrid->HideRow(i);
     }
     trainingTypeGrid->AutoSize();
-    GetAuiManager()->GetPane(trainingTypeGrid).BestSize(trainingTypeGrid->GetSize());
 
     trainingDialog = new CreateTrainingProgramDialog(this->frame, pUser->unit, pUser->level, pUser->distance, pUser->raceDate, pUser->pulse);
     trainingDialog->SetLogLevel(wxLOG_Error);
@@ -315,7 +396,8 @@ bool MyApp::OnInit()
         if (plan != NULL) {
             delete plan;
         }
-        plan = new Plan(trainingDialog->GetDistance(), trainingDialog->GetLevel(), trainingDialog->GetDate());
+
+        plan = new Plan(trainingDialog->GetDistance(), trainingDialog->GetLevel(), trainingDialog->GetDate(), weekDayOrder);
         plan->CreateProgram(trainingDialog->GetUnit());
         pUser->unit = trainingDialog->GetUnit();
         pUser->level = trainingDialog->GetLevel();
@@ -324,47 +406,137 @@ bool MyApp::OnInit()
         pUser->pulse = trainingDialog->GetPulse();
         UpdatePulse();
     }
-    GetAuiManager()->AddPane(trainingDialog, wxAuiPaneInfo(commonInfo).Name("Settings").Layer(2).Left().Caption(_("Settings for training program")).BestSize(trainingDialog->GetSize()));
 
-    // Create the webview
-    wxString url("https://www.amazon.com/80-20-Running-Stronger-Training-ebook/dp/B00IIVFAEY");
-    //	wxString url("http://www.jogg.se");
-    //	wxString url("http://www.mattfitzgerald.org/books");
-    wxWebView* webView = wxWebView::New(frame, wxID_ANY, url);
-
-    //	WebView *webView = new WebView( frame,  );
-    GetAuiManager()->AddPane(webView, wxAuiPaneInfo(commonInfo).Name("Book").Layer(2).Left().Caption(_("Buy the \"80/20 Running\" book by Matt Fitzgerald")).MinSize(wxSize(512, 512)));
 
     wxDateTime date = wxDateTime::Today();
     //date -= wxTimeSpan(12*24);
     today = new TodayControl(frame, *plan, date, pUser->unit);
-    GetAuiManager()->AddPane(today, wxAuiPaneInfo(commonInfo).Name("Today").Right().Layer(2).Caption(_("Training " + date.GetWeekDayName(date.GetWeekDay()) + " " + date.FormatISODate())).CloseButton(true).MaxSize(wxSize(100, 0)));
+
+    std::vector<std::vector<int>> tpd = plan->GetTrainingTypePerWeekDay();
+    weekDayControl = new WeekDay(frame, *plan);
+
+    // Create the webview
+    wxString url("http://amzn.com/0451470885");
+//	wxString url("http://www.jogg.se");
+//	wxString url("http://www.mattfitzgerald.org/books");
+#if wxUSE_WEBVIEW
+
+    wxWebView *webView = wxWebView::New(frame, wxID_ANY, url);
+
+//	WebView *webView = new WebView( frame,  );
+#endif
+
+    rm::Calculator *pCalculator = new rm::Calculator( frame );
     //auiManager->GetPane(today).BestSize(today->GetSize()).MaxSize(wxSize(100,-1));
 
     trainingProgram = new TrainingProgramGrid(frame, plan, pUser->unit);
-    GetAuiManager()->AddPane(trainingProgram, wxAuiPaneInfo(commonInfo).Name("TrainingTable").Layer(1).DefaultPane().Center().Caption(plan->ToString()).BestSize(trainingProgram->GetSize()));
 
-    if (cpHelpWindow == NULL) {
+    if (cpHelpWindow==NULL) {
         // Create embedded HTML Help window
-        cpHelpController = new wxHtmlHelpController(wxHF_DEFAULTSTYLE | wxHF_FLAT_TOOLBAR, frame);
+        cpHelpController = new wxHtmlHelpController( wxHF_DEFAULTSTYLE | wxHF_FLAT_TOOLBAR, frame );
         cpHelpWindow = new wxHtmlHelpWindow;
         cpHelpWindow->UseConfig(configuration, wxString("Help")); // Set your own config object here
 //		cpHelpController->UseConfig(configuration);
         cpHelpController->SetHelpWindow(cpHelpWindow);
         cpHelpWindow->Create(frame, wxID_ANY, wxDefaultPosition, wxDefaultSize,
-                             wxTAB_TRAVERSAL | wxBORDER_NONE, wxHF_DEFAULT_STYLE);
-        cpHelpController->AddBook(::wxGetCwd() + wxFileName::GetPathSeparator() + "rmhelp.zip");
+                             wxTAB_TRAVERSAL|wxBORDER_NONE, wxHF_DEFAULT_STYLE);
+        cpHelpController->AddBook(::wxGetCwd()+wxFileName::GetPathSeparator()+"rmhelp.zip");
+
+        cpHelpWindow->GetTreeCtrl()->ExpandAll();
         cpHelpController->DisplayContents();
-        GetAuiManager()->AddPane(cpHelpWindow, wxAuiPaneInfo(commonInfo).Name("Help").BestSize(screenSize.x / 2, screenSize.y - 20).Float().Caption("Help").DestroyOnClose(false));
-        GetAuiManager()->GetPane("Help").Hide();
+        //	auiManager->GetPane("Help").Hide();
     }
 
-    if (vPerspectives.size() == 0) {
-        vPerspectives["Default"] = GetAuiManager()->SavePerspective();
+    boost::shared_ptr<wxAuiManager> auiManager = GetAuiManager();
+    auiManager->AddPane(zoneGrid, wxAuiPaneInfo(commonInfo).Name("Zones").Top().Layer(1).Caption(_("Zones")));
+    zoneGrid->AutoSize();
+    auiManager->GetPane(zoneGrid).BestSize(zoneGrid->GetSize());
+    auiManager->AddPane(trainingTypeGrid, wxAuiPaneInfo(commonInfo).Name("TrainingType").Right().Layer(2).Caption(_("Training types")));
+    auiManager->GetPane(trainingTypeGrid).BestSize(trainingTypeGrid->GetSize());
+    auiManager->AddPane(trainingDialog, wxAuiPaneInfo(commonInfo).Name("Settings").Layer(2).Left().Caption(_("Settings for training program")).BestSize(trainingDialog->GetSize()));
+    auiManager->AddPane(today, wxAuiPaneInfo(commonInfo).Name("Today").Right().Layer(2).Caption(_("Training "+date.GetWeekDayName(date.GetWeekDay())+" "+date.FormatISODate())).CloseButton(true).MaxSize(wxSize(100,0)));
+    auiManager->AddPane(weekDayControl, wxAuiPaneInfo(commonInfo).Name("WeekDay").Left().Layer(2).Caption(_("Week day summary")).CloseButton(true).BestSize(weekDayControl->GetSize()));
+#if wxUSE_WEBVIEW
+    auiManager->AddPane(webView, wxAuiPaneInfo(commonInfo).Name("Book").Layer(2).Right().Caption(_("Buy the \"80/20 Running\" book by Matt Fitzgerald")).MinSize(wxSize(256,256)));
+#endif
+    auiManager->AddPane(pCalculator, wxAuiPaneInfo(commonInfo).Name("Calculator").Left().Layer(2).Caption(_("Calculator")).CloseButton(true));
+    auiManager->AddPane(trainingProgram, wxAuiPaneInfo(commonInfo).Name("TrainingTable").Layer(1).DefaultPane().Center().Caption(plan->ToString()));//.BestSize(trainingProgram->GetSize()));
+    auiManager->AddPane(cpHelpWindow, wxAuiPaneInfo(commonInfo).Name("Help").BestSize(screenSize.x/2,screenSize.y-20).Caption("Help").DestroyOnClose(false).Layer(2).Right());
+
+    auiManager->Update();
+
+    if (recreatePerspectives) {
+        vPerspectives["Default"] = auiManager->SavePerspective();
+
+        // Create
+        auiManager->GetPane(zoneGrid).Show();
+        auiManager->GetPane(trainingTypeGrid).Hide();
+        auiManager->GetPane(today).Hide();
+#if wxUSE_WEBVIEW
+        auiManager->GetPane(webView).Hide();
+#endif
+        auiManager->GetPane(pCalculator).Hide();
+        //auiManager->GetPane(cpHelpWindow).Hide();
+        auiManager->GetPane(trainingDialog).Left().Layer(1);
+        auiManager->GetPane(weekDayControl).Bottom().Layer(1).BestSize(weekDayControl->GetSize());
+        auiManager->GetPane(trainingProgram).Center().Layer(0);
+        auiManager->GetPane(cpHelpWindow).Right().Layer(2);
+        vPerspectives["Create"] = auiManager->SavePerspective();
+
+        // Training
+        auiManager->GetPane(zoneGrid).Show();
+        auiManager->GetPane(trainingTypeGrid).Show();
+        auiManager->GetPane(today).Show();
+#if wxUSE_WEBVIEW
+        auiManager->GetPane(webView).Hide();
+#endif
+        auiManager->GetPane(pCalculator).Hide();
+        //auiManager->GetPane(cpHelpWindow).Hide();
+        auiManager->GetPane(trainingDialog).Hide();
+        auiManager->GetPane(weekDayControl).Hide();
+        auiManager->GetPane(trainingProgram).Center().Layer(0);
+        auiManager->GetPane(cpHelpWindow).Hide();
+        vPerspectives["Training"] = auiManager->SavePerspective();
+
+        // Calculator
+        auiManager->GetPane(zoneGrid).Hide();
+        auiManager->GetPane(trainingTypeGrid).Hide();
+        auiManager->GetPane(today).Hide();
+#if wxUSE_WEBVIEW
+        auiManager->GetPane(webView).Hide();
+#endif
+        auiManager->GetPane(pCalculator).Show().Maximize();
+        //auiManager->GetPane(cpHelpWindow).Hide();
+        auiManager->GetPane(trainingDialog).Hide();
+        auiManager->GetPane(weekDayControl).Hide();
+        auiManager->GetPane(trainingProgram).Hide();
+        auiManager->GetPane(cpHelpWindow).Hide();
+        vPerspectives["Calculator"] = auiManager->SavePerspective();
+
+        // Help
+        auiManager->GetPane(zoneGrid).Hide();
+        auiManager->GetPane(trainingTypeGrid).Hide();
+        auiManager->GetPane(today).Hide();
+#if wxUSE_WEBVIEW
+        auiManager->GetPane(webView).Layer(1).Right().Show();
+#endif
+        auiManager->GetPane(pCalculator).Hide();
+        //auiManager->GetPane(cpHelpWindow).Hide();
+        auiManager->GetPane(trainingDialog).Hide();
+        auiManager->GetPane(weekDayControl).Hide();
+        auiManager->GetPane(trainingProgram).Hide();
+        auiManager->GetPane(cpHelpWindow).Layer(0).Center().DefaultPane().Show();
+        vPerspectives["Help"] = auiManager->SavePerspective();
     }
 
+    if (lastPerspective.IsEmpty()) {
+        lastPerspective = wxString("Create");
+    }
     if (!lastPerspective.IsEmpty()) {
-        GetAuiManager()->LoadPerspective(lastPerspective);
+        std::map<wxString,wxString>::iterator it = FindPerspective(lastPerspective);
+        if ( it != vPerspectives.end() ) {
+            auiManager->LoadPerspective( it->second );
+        }
     }
 
     GetAuiManager()->Update();
@@ -372,15 +544,27 @@ bool MyApp::OnInit()
 
     frame->Show(true);
 
-    trainingProgram->GoToCell(trainingProgram->todayLine, 0);
-    trainingProgram->SetGridCursor(trainingProgram->todayLine, 0);
+    trainingProgram->GoToCell(trainingProgram->todayLine,0);
+    trainingProgram->SetGridCursor(trainingProgram->todayLine,0);
+//	auiManager->SetActivePane(trainingProgram);//auiManager->GetPane("TrainingTable"));
+//	trainingProgram->DoCaptureMouse
 
     return true;
 }
 
 int MyApp::OnExit()
 {
-    wxConfigBase* configuration = wxConfig::Get();
+    wxConfigBase *configuration = wxConfig::Get();
+
+    if ( plan != NULL) {
+        wxString sWeekDays;
+        for (int i=0; i<6; i++) {
+            sWeekDays += wxString::Format("%d;",plan->weekDayOrder[i]);
+        }
+        sWeekDays += wxString::Format("%d",plan->weekDayOrder[6]);
+        configuration->Write(wxString("WeekDayOrder"), sWeekDays);
+    }
+
 
     delete plan;
     plan = NULL;
@@ -420,6 +604,12 @@ int MyApp::OnExit()
         entry = user + wxString("/RaceDate");
         wxString sRaceDate;
         configuration->Write(entry, pUser->raceDate.FormatISODate());
+
+        entry = user + wxString("/CalcSpeedMin");
+        configuration->Write(entry, pUser->calculatorSpeedMin);
+
+        entry = user + wxString("/CalcSpeedSec");
+        configuration->Write(entry, pUser->calculatorSpeedSec);
 
         SavePaces(user);
 
@@ -471,7 +661,12 @@ void MyApp::OnZone(wxCommandEvent& WXUNUSED(e))
     wxString caption(_("Enter lactate threshold pulse (not max pulse!)"));
     wxString title(_("Pulse"));
     wxString sPulse = ::wxGetTextFromUser(caption, title, defaultValue);
-    wxBitmap icon(wxIcon(wxString("aaaaaaaa")));
+    wxBitmap icon;
+#ifdef wxHAS_IMAGES_IN_RESOURCES
+    icon = wxBitmap(wxIcon(wxString("aaaaaaaa")));
+#else
+    icon = wxBitmap(wxIcon(wxICON(sample_16)));
+#endif
     wxAuiPaneInfo commonInfo;
     commonInfo.MaximizeButton(true).Icon(icon).MinimizeButton(true).CloseButton(true);
 
@@ -556,6 +751,7 @@ void MyApp::SavePerspectives()
     if (!lastPerspectiveFound) {
         lastPerspective = wxEmptyString;
     }
+    configuration->Write("LastPerspective", lastPerspective);
 }
 
 void MyApp::ReadPaces(wxString const& user)
@@ -696,7 +892,44 @@ void MyApp::OnUpdateLoadPerspective(wxUpdateUIEvent& e)
     }
 }
 
-void MyApp::OnSavePerspective(wxCommandEvent& WXUNUSED(e))
+void MyApp::OnCreateUser( wxCommandEvent &WXUNUSED(e) )
+{
+    //wxLogMessage(_("Create"));
+    wxString userName = ::wxGetTextFromUser(_("User name:"), _("New user"), _("New User"), this->frame);
+    UserPtr pNewUser  = User::AddUser( userName );
+    *pNewUser = *User::GetUser();
+    SavePaces(userName);
+    ReadPaces(userName);
+}
+
+void MyApp::OnSelectUser( wxCommandEvent &WXUNUSED(e) )
+{
+    std::map<wxString,UserPtr> &users = User::GetUsers();
+    if (users.size()==0) {
+        return;
+    }
+    wxArrayString selections;
+    std::map<wxString,UserPtr>::iterator it = users.begin(), e=users.end();
+    int idx = 0;
+    int i=0;
+    while (it != e) {
+        selections.Add(it->first);
+        it++;
+        i++;
+    }
+    wxString selection = ::wxGetSingleChoice(_("Select a user"), _("Users"), selections, idx, frame);
+    if (selection.IsEmpty()) {
+        return;
+    }
+    User::SetCurrentUser( users[selection] );
+}
+
+void MyApp::OnDeleteUser( wxCommandEvent &WXUNUSED(e) )
+{
+    wxLogMessage(_("Delete"));
+}
+
+void MyApp::OnSavePerspective(wxCommandEvent &WXUNUSED(e))
 {
     wxString s = ::wxGetTextFromUser(_("Enter a name for the perspective"), _("Save perspective"), wxString::Format(_("Perspective %d"), (int)(vPerspectives.size() + 1)), frame);
     if (s.IsEmpty()) {

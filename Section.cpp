@@ -1,6 +1,6 @@
-#include	"Section.h"
-#include	"Zone.h"
-#include	"Converter.h"
+#include	<Section.h>
+#include	<Zone.h>
+#include	<Converter.h>
 #include	<wx/log.h>
 
 wxString SectionTime::ToString(PTUnit const &WXUNUSED(outUnit), bool bZone, bool bTime)

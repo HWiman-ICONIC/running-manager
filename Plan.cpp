@@ -1,29 +1,33 @@
-#include	"Plan.h"
-#include	"TrainingType.h"
+#include	<Plan.h>
+#include	<TrainingType.h>
 #include	<wx/tokenzr.h>
 #include	<wx/log.h>
 
-Plan::Plan(PTDistance distance, PTLevel level, wxDateTime date)
+Plan::Plan(PTDistance distance, PTLevel level, wxDateTime date, wxArrayInt weekDayOrder)
 {
     this->distance = distance;
     this->level = level;
     this->date = date;
+    this->weekDayOrder = weekDayOrder;
+    for (int i=0; i<7; i++) {
+        wxMessageOutputDebug().Printf("plan %d: -> %d", i, weekDayOrder[i]);
+    }
 
     switch (distance) {
     case PTD_5KM:
-        programLength = wxTimeSpan(24*7*9);
+        programLength = wxDateSpan(0,0,9,0);
         break;
 
     case PTD_10KM:
-        programLength = wxTimeSpan(24*7*12);
+        programLength = wxDateSpan(0,0,12,0);
         break;
 
     case PTD_HALF_MARATHON:
-        programLength = wxTimeSpan(24*7*15);
+        programLength = wxDateSpan(0,0,15,0);
         break;
 
     case PTD_MARATHON:
-        programLength = wxTimeSpan(24*7*18);
+        programLength = wxDateSpan(0,0,18,0);
         break;
     }
 }
@@ -34,8 +38,8 @@ void Plan::CreateProgram(PTUnit const &unit)
     startTime = date-programLength;
     int i = 0;
     while (startTime.GetWeekDay() != wxDateTime::Sun) {
-        startTime += wxTimeSpan(24);
-        programLength -= wxTimeSpan(24);
+        startTime += wxDateSpan(0,0,0,1);
+        programLength -= wxDateSpan(0,0,0,1);
         i++;
     }
 
@@ -45,11 +49,11 @@ void Plan::CreateProgram(PTUnit const &unit)
         startTime = wxDateTime(date);
         startTime -= programLength;
         while (startTime.GetWeekDay() != wxDateTime::Sun) {
-            startTime -= wxTimeSpan(24);
-            programLength += wxTimeSpan(24);
+            startTime -= wxDateSpan(0,0,0,1);
+            programLength += wxDateSpan(0,0,0,1);
         }
     }
-    startTime += wxTimeSpan(24); // Always a Monday!
+    startTime += wxDateSpan(0,0,0,1); // Always a Monday!
 //	wxLogMessage(_("Your program will start on ")+startTime.GetWeekDayName(startTime.GetWeekDay())+" "+startTime.FormatISODate());
 
     CreatePlan();
@@ -329,6 +333,16 @@ void Plan::SetPlan( wxString const &s )
     unsigned long ul;
     wxString sTraining, sIntensity;
     int day = 0;
+    wxArrayInt inverseWeekDay;
+
+
+    for (int i=0; i<7; i++) {
+        for (int j=0; j<7; j++) {
+            if (weekDayOrder[j]==i) {
+                inverseWeekDay.Add(j);
+            }
+        }
+    }
     while (tokenizer.HasMoreTokens()) {
         wxString token = tokenizer.GetNextToken();
         token.ToULong(&ul);
@@ -338,23 +352,53 @@ void Plan::SetPlan( wxString const &s )
         token = tokenizer.GetNextToken();
         week.SetPhase(token);
 
+        std::list<Training> trainingPerDay[7];
         for (int i=0; i<7; i++) {
+            int j = inverseWeekDay[i];
+            //for (j=0; j<7; j++)
+            //	if (weekDayOrder[j] == i)
+            //		break;
+
             sTraining = tokenizer.GetNextToken();
             if (sTraining == "2X") {
                 sTraining = tokenizer.GetNextToken();
                 sIntensity = tokenizer.GetNextToken();
-                week.training.push_back(Training());
-                Training &training = week.training.back();
-                CreateTraining( sTraining, sIntensity, wxDateTime(startTime+wxTimeSpan(24*day)), training );
+                //			week.training.push_back(Training());
+                //			Training &training = week.training.back();
+                Training training;
+                wxDateTime thisDay(startTime);
+                thisDay += wxDateSpan(0,0,0,day+j);
+                CreateTraining( sTraining, sIntensity, thisDay, training );
+                trainingPerDay[j].push_back(training);
                 sTraining = tokenizer.GetNextToken();
             }
             sIntensity = tokenizer.GetNextToken();
-            week.training.push_back(Training());
-            Training &training = week.training.back();
 
-            CreateTraining( sTraining, sIntensity, wxDateTime(startTime+wxTimeSpan(24*day)), training );
-            day++;
+
+            Training training;
+            wxDateTime thisDay(startTime);
+            thisDay += wxDateSpan(0,0,0,day+j);
+            CreateTraining( sTraining, sIntensity, thisDay, training );
+            trainingPerDay[j].push_back(training);
+            //day++;
         }
+//		day += 7;
+
+        for (int i=0; i<7; i++, day++) {
+            int idx;
+            if(tokenizer.HasMoreTokens()) {
+                idx=i;
+            } else {
+                idx = weekDayOrder[i];
+            }
+            wxDateTime thisDay(startTime);
+            thisDay += wxDateSpan(0,0,0,day);
+            for (std::list<Training>::iterator it=trainingPerDay[idx].begin(); it!=trainingPerDay[idx].end(); it++) {
+                it->date = thisDay;
+                week.training.push_back(*it);
+            }
+        }
+
     }
     weeks = std::vector<Week>(lWeeks.size());
     std::list<Week>::iterator it = lWeeks.begin();
@@ -399,12 +443,16 @@ void Plan::CreateTraining( wxString const &sTraining, wxString const &sIntensity
         training.type = MIR;
     } else if (sTraining.Cmp("HM") == 0 ) {
         training.type = HM;
+//		sIntensity = "3";
     } else if (sTraining.Cmp("M") == 0 ) {
         training.type = M;
+//		sIntensity = "3";
     } else if (sTraining.Cmp("KM10") == 0 ) {
         training.type = KM10;
+//		sIntensity = "3";
     } else if (sTraining.Cmp("KM5") == 0 ) {
         training.type = KM5;
+//		sIntensity = "4";
     } else {
         wxLogError(_("Unparsed training: %s"), sTraining);
     }
@@ -469,4 +517,48 @@ bool Plan::SaveCsv( wxString const &filename )
     textFile.Write();
     textFile.Close();
     return true;
+}
+
+std::vector<std::vector<int>> Plan::GetTrainingTypePerWeekDay()
+{
+    wxArrayInt inverseWeekDay = weekDayOrder;
+
+    std::vector<std::vector<int>> typePerDay = std::vector<std::vector<int>>(7);
+    int nTypes = (int) PTTrainingType::KM5+1;
+    for (int i=0; i<7; i++) {
+        typePerDay[i] = std::vector<int>(nTypes);
+        for (int j=0; j<nTypes; j++) {
+            typePerDay[i][j] = 0;
+        }
+        /*for (int j=0; j<7; j++)
+        {
+        	if (weekDayOrder[j]==i)
+        		inverseWeekDay.Add(j);
+        }*/
+
+    }
+
+    for (int w=0; w<weeks.size(); w++) {
+        Week &week = weeks[w];
+        std::list<Training>::iterator it, e;
+        for (it =week.training.begin(); it!=week.training.end(); it++) {
+            Training &training = *it;
+            wxDateTime::WeekDay weekDay = training.date.GetWeekDay();
+            int type = (int)training.type;
+            int day = (int)(weekDay-1);
+            if (weekDay==wxDateTime::Sun) {
+                day = 6;
+            }
+
+            if (day<0 || day>=7) {
+                continue;
+            }
+            day = inverseWeekDay[day];
+            if (type <0|| type>= typePerDay[day].size()) {
+                continue;
+            }
+            typePerDay[day][type]++;
+        }
+    }
+    return typePerDay;
 }

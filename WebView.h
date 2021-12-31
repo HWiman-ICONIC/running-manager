@@ -1,9 +1,10 @@
 #pragma once
 
+#if wxUSE_WEBVIEW
 #include	<wx/webview.h>
 
-class WebView : public wxWebView
-{
+class WebView : public wxWebView {
 public:
-	WebView( wxWindow *pParent, wxString const &url );
+    WebView( wxWindow *pParent, wxString const &url );
 };
+#endif

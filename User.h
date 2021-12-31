@@ -1,6 +1,6 @@
 #pragma once
 
-#include	"Defines.h"
+#include	<Defines.h>
 #include	<boost/shared_ptr.hpp>
 #include	<map>
 
@@ -13,6 +13,8 @@ typedef boost::shared_ptr<User> UserPtr;
 class User {
 public:
     User();
+
+    User::User(UserPtr pOther);
 
     //! The distance unit
     PTUnit unit;
@@ -31,6 +33,9 @@ public:
 
     //! Date of competition
     wxDateTime raceDate;
+
+    int calculatorSpeedMin;
+    int calculatorSpeedSec;
 
     //! Returns references to all users by name
     static std::map<wxString,UserPtr>& GetUsers();

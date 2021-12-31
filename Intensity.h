@@ -1,7 +1,7 @@
 #pragma once
 
-#include	"Defines.h"
-#include	"Section.h"
+#include	<Defines.h>
+#include	<Section.h>
 #include	<boost/shared_ptr.hpp>
 #include	<wx/string.h>
 #include	<list>

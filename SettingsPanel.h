@@ -1,10 +1,12 @@
 #pragma once
 
-#include	"Defines.h"
+#include	<Defines.h>
 #include	<wx/button.h>
 #include	<wx/panel.h>
 #include	<wx/calctrl.h>
 #include	<wx/log.h>
+#include    <wx/radiobox.h>
+#include    <wx/spinctrl.h>
 
 class CreateTrainingProgramDialog : public wxPanel {
 public:
@@ -29,11 +31,12 @@ public:
 
     virtual bool TransferDataFromWindow();
 
-    void SetLogLevel(wxLogLevel otherLevel) {
-        cLogLevel=otherLevel;
+    void SetLogLevel(wxLogLevel level) {
+        cLogLevel=level;
     }
 
 private:
+    void OnDistanceSelected( wxCommandEvent &e );
     wxLogLevel cLogLevel;
     wxRadioBox *level;
     wxRadioBox *distance;

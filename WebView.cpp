@@ -1,5 +1,5 @@
-#include	"WebView.h"
-
+#include	<WebView.h>
+#if wxUSE_WEBVIEW
 WebView::WebView( wxWindow *pParent, wxString const &url ) :
     wxWebView()
 {
@@ -7,3 +7,4 @@ WebView::WebView( wxWindow *pParent, wxString const &url ) :
 }
 
 //http://www.amazon.com/80-20-Running-Stronger-Training-ebook/dp/B00IIVFAEY#
+#endif

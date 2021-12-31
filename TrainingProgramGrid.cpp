@@ -1,7 +1,7 @@
-#include	"TrainingProgramGrid.h"
-#include	"TrainingType.h"
-#include	"RunningManager.h"
-#include	"Event.h"
+#include	<TrainingProgramGrid.h>
+#include	<TrainingType.h>
+#include	<Lubba.h>
+#include	<Event.h>
 
 wxBEGIN_EVENT_TABLE(TrainingProgramGrid, wxGrid)
     EVT_GRID_SELECT_CELL(TrainingProgramGrid::OnLabelLeftClick)
@@ -19,6 +19,9 @@ void TrainingProgramGrid::OnDateSelected( wxCommandEvent &e )
 TrainingProgramGrid::TrainingProgramGrid( wxWindow *pParent, Plan *pt, PTUnit const &outUnit ) :
     wxGrid(pParent, wxID_ANY)
 {
+#ifdef __WXGTK__
+    SetLabelFont(GetLabelFont().MakeSmaller());
+#endif
     bIsCreated = false;
     todayLine = -1;
     CreateGrid(1,3);
