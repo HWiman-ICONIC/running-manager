@@ -1,0 +1,458 @@
+\documentstyle[a4,texhelp]{report}
+\title{80/20 Running Manager v1.7}
+\author{\center{
+\image{}{8020Running.png}
+
+\urlref{ReVisitor AB}{http://www.wiman.nu/rm}}}
+
+\today
+\document{
+\maketitle
+
+
+
+\tableofcontents
+
+\copyright{} \bf{2016 (Software) \urlref{ReVisitor AB}{http://www.wiman.nu/rm}}
+
+\copyright{} \bf{2016 (Training program) \urlref{Matt Fitzgerald}{http://www.mattfitzgerald.org}}
+
+\chapter{80/20 Running Manager}\label{Intro}
+
+\center{\image{}{8020Running.png}}
+
+80/20 Running Manager helps you to create and follow your training program for 5km, 10km, half and full marathon.
+It is based on the book "80/20 Running" by Matt Fitzgerald. It is strongly recommended that you buy the book
+to get the most out of 80/20 Running Manager. You can buy the book from Amazon within the Running Manager program.
+
+From the back cover:
+
+\em{TRAIN EASIER TO RUN FASTER
+
+This revolutionary training method has been embraced by elite runners—with extraordinary results—and now you can do it, too.
+
+Respected running and fitness expert Matt Fitzgerald explains how the 80/20 running program—in which you do 80 percent of runs at a lower intensity and just 20 percent at a higher intensity—is the best change runners of all abilities can make to improve their performance. With a thorough examination of the science and research behind this training method, 80/20 Running is a hands-on guide for runners of all levels with training programs for 5K, 10K, half-marathon, and marathon distances.
+
+In 80/20 Running, you’ll discover how to transform your workouts to avoid burnout.
+
+•Runs will become more pleasant and less draining
+
+•You’ll carry less fatigue from one run to the next
+
+•Your performance will improve in the few high-intensity runs
+
+•Your fitness levels will reach new heights
+
+80/20 Running promotes a message that all runners—as well as cyclists, triathletes, and even weight-loss seekers—can embrace: Get better results by making the majority of your workouts easier.}
+
+\center{
+\begin{figure}
+\center{\image{}{book.png}}
+
+\caption{Buy the book within Running Manager.}
+\end{figure}
+}
+
+\chapter{Training program}\label{TrainingProgram}
+80/20 Running Manager assumes that you will train with a specific race in mind. Different training programs
+are created depending on the race distance and the amount of training you are willing to do. The length of 
+each training program depends on the race distance. All training programs start with a Base phase followed by 
+a Peak phase and a Taper phase. They are all based on three week cycles going from easier to harder within 
+each three week cycle, and starting each three week cycle at a slightly higher level than the previous.
+
+You create a training program in the \helpref{settings window}{Settings}, but first you may want to read more
+about the \helpref{layout}{Layout} of the 80/20 Running Manager.
+
+\chapter{80/20 Running Manager Layout}\label{Layout}
+When you have started 80/20 Running Manager you will see a number of panes. 
+
+\itemize{
+\item{Each pane can be dragged out of the 
+main frame to a floating window by clicking the gray title bar and drag it while keeping the mouse button pressed.}
+\item{You can in the same way rearrange panes or dock floatinng panes to another place within the main frame. Shaded 
+hint areas will be shown as you drag the window.}
+\item{The panes can be maximized by clicking the maximize button and the right side of the title bar. Click the
+minimize button to restore its original position}
+\item{You can close panes that you do not want to see. Closed panes can always be restored by \helpref{loading the default perspective}{perspectives}.}
+\item{You can change the proportions of the docked panes by dragging the bar between two panes.}
+\item{You can \helpref{save, load and delete window layouts (aka perspectives)}{perspectives}}
+}
+
+The following panes are available in Running Manager:
+
+\itemize{
+\item{ \helpref{Settings}{Settings} }
+\item{ \helpref{Training table}{TrainingTable} }
+\item{ \helpref{Weekday summary}{Weekday} }
+\item{ \helpref{Training details}{Today} }
+\item{ \helpref{Zones}{Zone} }
+\item{ \helpref{Training type}{TrainingType} }
+\item{ \helpref{Calculator and Predictor}{Calculators} }
+\item{ \helpref{Help}{Help} }
+\item{ \helpref{Link to book}{Intro} }
+}
+
+\center{
+\begin{figure}
+\center{\image{}{mainframe.png}}
+
+\caption{80/20 Running Manager main frame.}
+\end{figure}
+}
+
+\center{
+\begin{figure}
+\center{\image{}{linux.png}}
+
+\caption{80/20 Running Manager main frame in Linux (Ubuntu).}
+\end{figure}
+}
+\section{Customizing window layout}\label{perspectives}
+You can save up to five window layouts, a.k.a. perspectives, so that you easily can restore them later.
+When you have \helpref{customized all panes}{Layout} the way you want them, you select \it{Perspective->Save} in the menu or enter \it{Ctrl+P}.
+You enter the name you want to give to this perspective and click Ok. To open a saved perspective, select \it{Perspective->Load} or
+enter \it{Ctrl+L}. To restore the original window layout, choose \it{Default}. The last window layout will be used when RunningManager 
+is reopened, either it was saved or not. If you want to delete one or more
+perspectives, select \it{Perspective->Delete} (or enter Ctrl+D), check the perspectives you want to delete and click Ok.
+
+You can show RunningManager in full screen mode by selecting Perspective->Show fullscreen or enter Ctrl+F. This will
+maximize the display area for RunningManager. 
+
+\center{
+\begin{figure}
+\center{\image{}{persp_menu.png}}
+
+\caption{Manage your window layout with the \it{Perspectives} menu.}
+\end{figure}
+}
+
+\center{
+\begin{figure}
+\center{\image{}{persp_save.png}}
+
+\caption{ \it{Perspectives->Save} will save the current window layout. Up to five perspectives, including the default, can be saved.}
+\end{figure}
+}
+
+\center{
+\begin{figure}
+\center{\image{}{persp_load.png}}
+
+\caption{ \it{Perspectives->Load} will load a previously saved perspective.}
+\end{figure}
+}
+
+\center{
+\begin{figure}
+\center{\image{}{persp_delete.png}}
+
+\caption{ \it{Perspectives->Delete} will open this dialog where you can choose which perspective(s) to delete. The default perspective can not be deleted.}
+\end{figure}
+}
+
+You can show RunningManager in full screen mode by selecting \it{Perspectives->Show fullscreen} or \it{Ctrl+F}. On small
+monitors this can be useful to display as much information as possible.
+
+\chapter{Settings for training program}\label{Settings}
+\center{
+\begin{figure}
+\center{\image{}{settingsPane.png}}
+
+\caption{Create a training program by filling in these data.}
+\end{figure}
+}
+In the "Settings for training program" pane, you do the selection for creating a new training program. 
+\itemize{
+\item{ \bf{Distance}. Select your planned race distance}
+\item{ \bf{Training level}. Select your training level. This defines the amount of training you will spend. For example,
+Low will always have no training one day a week, while Medium and High will have only one day without training within 
+each three week cycle. High level includes some double trainings on a single day.}
+\item{ \bf{Distance unit}. Most of the training is defined in time rather than distance. The training that is defined by 
+distance will use this metric unit.}
+\item{ \bf{Lactate pulse}. You do not need to set this to create a training program, but it helps to define the \helpref{zones}{Zone} correctly.}
+\item{ \bf{Race date}. Select the race date. Currently, the race date is always assumed to be on a Sunday. This will be 
+changed in a later release. By clicking on the bar with the month you will get a list of all months within the year.
+Clicking on the bar again will list years etc.}
+\item{ \bf{Update}. Click the Update button to create/update your training program. This will refresh all other panes
+with your desired settings.}
+}
+
+The last created training program will be loaded when you reopen RunningManager so that you easily can monitor
+your day-by-day training.
+
+\chapter{Training table}\label{TrainingTable}
+\center{
+\begin{figure}
+\center{\image{}{trainingTable.png}}
+
+\caption{Your training program is shown in a table. The size of the window has been collapsed in this figure.}
+\end{figure}
+}
+
+The training table is updated each time you click the Update button in the \helpref{settings window}{Settings}. 
+Except for the \it{Week} header lines, each line in the table represents one training. 
+Each week is separated by a line, which includes the phase (Base, Peak, Taper), the distance and the time. Distance and 
+time are based on the pace you have set in the \helpref{zones}{Zone} pane. For the High intensity level, there may be days with two trainings.
+Note that there also is a pane with details for a \helpref{single day training}{Today}. This pane is updated whenever you 
+click on a line in the training table.
+The following entries exist for each training:
+
+\itemize{
+\item{ \bf{Date}. The date for the training. }
+\item{ \bf{Training}. The type of training to exercise. The different types of training are defined in the \helpref{training 
+type}{TrainingType} pane.}
+\item{ \bf{Level}. Each \helpref{training type}{TrainingType} has a number of levels which define the length of the 
+training, usually measured in time, but for long distance runs defined in distance. The explicit meaning of each level
+is spelled out in the following Part and Time/Distance columns.
+\item{ \bf{Part X}. Each training consists of one or more parts. Each part is defined by a specified duration in a 
+\helpref{Zone}{Zone}. All parts on a line (i.e. for a training) are exercised in one sequence without any rest in between. 
+Some parts include repetitions like 6x(Zone 5 Zone 1) | 6x(1minutes 2 minutes). This means that you do six repetitions
+were each repetition includes 1 minute in Zone 5 and 2 minutes in Zone 1. Note that although most time is spent in Zone 1
+the entire part is classed as high intensity and thus is a part of the 20% you should spend in moderate to high intensity! }
+\item{ \bf{Time/distance X}. The duration of the part listed in the previous column. Each part and time/distance is colured
+by the intensity in that zone.}
+}
+
+\chapter{Weekday Summary and Editor}\label{Weekday}
+\center{
+\begin{figure}
+\center{\image{}{weekday.png}}
+
+\caption{This pane shows the number of times you will do different training types on each weekday. You can rearrange the weekdays by
+grabbing the wwkday label and drag it to a new position.}
+\end{figure}
+}
+
+For each day of the week, you can see which training types you will do. You also see how many times you do each training type.
+Perhaps most importantly, you can edit the weekdays. For example, long runs are by default on Sundays. If you want to do your long
+runs on Saturdays, you simply drag the "Sunday" label to right after the "Friday" label. An indicator shows where your selected training
+will be inserted. Click Update to update your training program.
+
+\chapter{Training details}\label{Today}
+\center{
+\begin{figure}
+\center{\image{}{todayPane.png}}
+
+\caption{A list of the training of the day.}
+\end{figure}
+}
+Initially, the \em{Training details} pane lists the training of the current date. It describes the training in detail.
+The total time and distance are computed from the pace you set in the \helpref{zones}{Zone} pane. When a different date is selected by clicking a row in the
+\helpref{training table}{TrainingTable}, the \em{Training details} pane is updated with information for that date.
+
+\chapter{Zones}\label{Zone}
+\center{
+\begin{figure}
+\center{\image{}{zones.png}}
+
+\caption{The zones pane.}
+\end{figure}
+
+The zones pane describes the feeling and pulse you should have for each zone. To set your pulse, choose \em{File->Pulse...} in the
+menu. Note that the pulse you set should be your lactate threshold pulse. One approximate way to determine your lactate threshold is 
+to run as fast as you can for 30 minutes and average the pulse for the last 3 km. 
+
+The zones are coloured green, yellow or red depending on intensity. Note that there is a gap in the pulse interval between Zone 2 and
+Zone 3. This is a pulse interval you normally should not train within. Depending on which part of the training you are in (see your
+\helpref{training table}{TrainingTable}) you should either go slower or faster. Also note, that the pulse is slow in reacting so
+you will obvioulsy initially find your pulse in the "wrong zone" as you switch from part of a training to another. Go by feeling and
+your general pace for the zone while the pulse adapts to the new part of the training.
+
+You can optionally set a pace for each zone. This will be saved and reloaded each time RunningManager is opened. The pace is used to 
+compute time and distance per week in the \helpref{training table}{TrainingTable} and per training in the \helpref{todays training}{Today}
+views. The average of the min and max paces are used in these cases. 
+}
+
+\chapter{Training types}\label{TrainingType}
+\center{
+\begin{figure}
+\center{\image{}{trainingTypesPane.png}}
+
+\caption{The training types pane.}
+\end{figure}
+
+The training types pane briefly describes the purpose and layout of the different types of runs. They are coloured by intensity from green 
+through yellow to red. All green training types are exclusively in \helpref{Zones}{Zone} 1 and 2. 
+
+\chapter{Running calculator}\label{Calculators}
+There are two tabs in this pane. One for a \helpref{calculator}{Calculator} that converts paces in different units and shows times for some
+common distances. And antoher for \helpref{predicting}{Predictor} times for different distances.
+
+\section{Calculator}\label{Calculator}
+\center{
+\begin{figure}
+\center{\image{}{calculator.png}}
+
+\caption{The running calculator.}
+\end{figure}
+
+Using the running calculator, you can convert between units and calculate your time for common race distances.
+Change the speed with the arrows or in the text box and both the speed in the other units and the race speeds 
+will be updated. The current speed is saved when closed and reloaded as you open RunningManager again.
+
+\section{Predictor}\label{Predictor}
+\center{
+\begin{figure}
+\center{\image{}{predictor.png}}
+
+\caption{The running predictor.}
+\end{figure}
+
+Enter a distance and a time and the predictor will estimate which time you are likely to get for other distances.
+Enter for example a time you did on a 10K race and see what times this equals for e.g. a marathon. The estimate
+are obviously just approximate and assumes that you are equally well trained for the different distances.
+
+\chapter{Use calendar in other apps.}\label{Export}
+Your training program can be exported to a *.csv file by selecting \em{File->Save training calendar...} in the menu. This file can be
+imported in e.g. Google calendar so that you have your training plan available wherever you are. Follow these steps to import the *.csv file
+ to Google Calendar:
+\itemize{
+\item{Open Google Calendar on a computer.}
+\item{Click on the arrow to the right of "My Calendars" and select "Create New Calendar".
+
+\image{}{gc1.png}}
+\item{Enter a Calendar Name and click "Create Calendar".
+
+\image{}{gc2.png}}
+\item{Click on the arrow to the right of "Other Calendars" and select "Import Calendar".
+
+\image{}{gc3.png}}
+\item{Browse to the *.csv file and click Open in the file menu. Select your newly created Calendar, e.g. "New York Marathon", in the
+drop down list to the right of "Calendar" and click Import.
+
+\image{}{gc4.png}}
+\item{You will see a confirmation window like this.
+
+\image{}{gc5.png}}
+}
+ 
+ Since you have put your training in a separate calendar it is easy to delete the training plan if you change your mind:
+ 
+ \itemize{
+\item{Click on the arrow that will appear to the right of the Calendar name when the cursor is over it and select "Edit calendar". }
+\item{You have many options to change settings for the calendar, including a handy code snippet to include you calendar in an HTML page ("Embed this calendar").
+To delete the clanedar, however, you choose "Permanently delete this calendar" under "Delete calendar". 
+
+\image{}{gc7.png}}
+\item{Confirm your choice in the next dialog. 
+
+\image{}{gc8.png}}
+ }
+
+ \chapter{Keyboard shortcuts}\label{shortcuts}\index{Shortcuts}
+ \begin{tabular}{|p{3cm}|p{12cm}|}\hline
+\ruledrow{\bf{Shortcut}&\bf{Explanation}}
+\row{F1&Show \helpref{help}{Help}}
+\row{F8& Show About box}
+\row{Ctrl+S& \helpref{Save training plan}{Export} }
+\row{Ctrl+Z& Set \helpref{lactate threshold pulse}{Zone}}
+\row{Ctrl+L& Load a \helpref{perspective}{perspectives}}
+\row{Ctrl+P& Save a \helpref{perspective}{perspectives}}
+\row{Ctrl+D& Delete \helpref{perspective(s)}{perspectives}}
+\row{Ctrl+F& Toggle fullscreen mode}
+\row{Alt+X& Exit the application }
+\end{tabular} 
+
+ \chapter{Help}\label{Help}
+ This help is hidden when you open RunningManager. Press F1 on choose Help->Contents in the menu to show it. The help is also available
+ online at \urlref{http://www.wiman.nu/runningmanager/rmhel.htm}{http://www.wiman.nu/runningmanager/rmhel.htm}. 
+ 
+ To get your free copy of RunningManager send a mail to rm_request@wiman.nu. You will instantly get an automatic reply with
+ download instructions. You can download the latest version of RunningManager 
+ \urlref{here (64-bit Windows)}{http://www.wiman.nu/runningmanager/download/setup64.exe} or \urlref{here (32-bit Windows)}{http://www.wiman.nu/runningmanager/download/setup32.exe}. 
+ Note that RunningManager currently only is available for the Windows platform. More platforms will be introduced soon.
+ 
+ Press F8 or choose Help->About in the menu to show information on current software and system version.
+ 
+ 
+ 
+ \chapter{Change log}
+ \section{Version 1.1, 2015-09-02}
+ \subsection{New features}
+ Added \helpref{help}{Help} documentation.
+ 
+ \section{Version 1.2, 2015-09-03}
+ \subsection{New features}
+ \itemize{
+ \item{ Created a \urlref{homepage}{http://wiman.nu/rm}.}
+ \item{ Created a 32-bit version, available at http://www.wiman.nu/download/rm_setup32.exe.}
+ }
+ \subsection{Bug fixes}
+ \itemize{
+ \item{ Upgraded to wxWidgets 3.0.2 SDK}
+ \item{ Radio controls in \helpref{settings pane}{Settings} are now white, not gray.}
+ \item{ Updated \helpref{help}{Help} documentation.}
+ }
+ 
+ \section{Version 1.3, 2015-09-10}
+ \subsection{New features}
+ \itemize{
+ \item{ You can now customize the window layout by \helpref{saving and loading perspectives}{perspectives}.}
+ \item{ Weeks and phases are printed out in the \helpref{training table}{TrainingTable}.}
+ \item{ When selecting a date in the \helpref{training program}{TrainingTable}, the \helpref{single-day pane}{Today} is updated to display the selected day.}
+ \item{ When starting RunningManager, the \helpref{training program}{TrainingTable} marks and scrolls to today's training.}
+ \item{ Added tooltips to \helpref{setting}{Settings} controls.}
+ }
+ \subsection{Bug fixes}
+ \itemize{
+ \item{ Added a warning if \helpref{entered race day}{Settings} is not a Sunday (currently the only supported race day).}
+ }
+ 
+ \section{Version 1.4, 2015-10-07}
+ \subsection{New features}
+ \itemize{
+ \item{ RunningManager can now be shown in \helpref{fullscreen mode}{perspectives}.}
+ \item{ Enabled setting lactate threshold pulse in \helpref{settings}{Settings}.}
+ \item{ Added quick guide to \helpref{keyboard shortcuts}{shortcuts}.}
+ \item{ You can now set pace for each \helpref{zone}{Zone}.}
+ }
+ 
+ \subsection{Bug fixes}
+ \itemize{
+ \item{ \helpref{Single day training}{Today} was not updated on left click in \helpref{training table}{TrainingTable} in some cases. Fixed.}
+ }
+ 
+ \section{Version 1.5, 2015-12-16}
+ \subsection{New features}
+ \itemize{
+ \item{ Time and distance are now shown per week in the \helpref{training program}{TrainingTable} and per day in the \helpref{single day training}{Today} view.}
+ \item{ More information is shown in the \helpref{single day training}{Today} view.}
+ }
+ 
+ \subsection{Bug fixes}
+ \itemize{
+ \item{ \helpref{Single day training}{Today} did not show second training on the same day (which occurs in the high level training).}
+ \item{ The automatic saving of last settings selection, pace, perspectives etc was not correctly done. Fixed, but the settings from erlier versions will need to be entered again.}
+ }
+ 
+ \section{Version 1.6, 2016-04-07}
+ \subsection{New features}
+ \itemize{
+ \item{ Added a \helpref{calculator}{Calculator} for km/h, min/km, min/mile and for common race distances.}
+ }
+ 
+ \subsection{Bug fixes}
+ \itemize{
+ \item{ Fixed a bug where dates were shifted, probably due to leap year. }
+ }
+ 
+ \section{Version 1.7, 2016-10-12}
+ \subsection{New features}
+ \itemize{
+ \item{ Added a race \helpref{predictor}{Predictor}.}
+ \item{ Added a \helpref{weekday summary}{Weekday} where you can see and edit the different training types per day of week.}
+ \item{ Added several default \helpref{perspectives}{perspectives}.}
+ }
+ 
+ \subsection{Bug fixes}
+ \itemize{
+ \item{ Fixed wrong data for Long Run Fast Finish. }
+ }
+
+}
+
+
+
+
+
+
