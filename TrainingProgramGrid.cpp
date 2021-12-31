@@ -1,6 +1,6 @@
 #include	<TrainingProgramGrid.h>
 #include	<TrainingType.h>
-#include	<Lubba.h>
+#include	<RunningManager.h>
 #include	<Event.h>
 
 wxBEGIN_EVENT_TABLE(TrainingProgramGrid, wxGrid)
