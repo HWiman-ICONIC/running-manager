@@ -23,19 +23,19 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
     this->installationDirectory = installationDirectory;
     cpHelp = NULL;
     auiManager = NULL;
-	SetIcon(wxICON(sample));
-/*    // set the frame icon
-    wxIcon sampleIcon;
-//    #if __WXWINDOWS__
-//    sampleIcon = wxICON(sample);
-//    #else
-    sampleIcon = wxIcon(wxICON(sample_32));
-    //  #endif
-    SetIcon(sampleIcon);
+    SetIcon(wxICON(sample));
+    /*    // set the frame icon
+        wxIcon sampleIcon;
+    //    #if __WXWINDOWS__
+    //    sampleIcon = wxICON(sample);
+    //    #else
+        sampleIcon = wxIcon(wxICON(sample_32));
+        //  #endif
+        SetIcon(sampleIcon);
 
-#ifdef __WXGTK__
-    SetFont(GetFont().MakeSmaller());
-#endif*/
+    #ifdef __WXGTK__
+        SetFont(GetFont().MakeSmaller());
+    #endif*/
 
 #if wxUSE_MENUS
     // create a menu bar
@@ -60,10 +60,10 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
 
 
     */
-    wxMenu *userMenu = new wxMenu;
-    userMenu->Append(Minimal_Create_User, _("Create user...\tCtrl+N"), _("Create a new user"));
-    userMenu->Append(Minimal_Select_User, _("Select user...\tCtrl+U"), _("Select a user"));
-    userMenu->Append(Minimal_Delete_User, _("Delete user...\tCtrl+X"), _("Delete a user"));
+    //wxMenu *userMenu = new wxMenu;
+    //userMenu->Append(Minimal_Create_User, _("Create user...\tCtrl+N"), _("Create a new user"));
+    //userMenu->Append(Minimal_Select_User, _("Select user...\tCtrl+U"), _("Select a user"));
+    //userMenu->Append(Minimal_Delete_User, _("Delete user...\tCtrl+X"), _("Delete a user"));
 
     wxMenu *perspectiveMenu = new wxMenu;
     perspectiveMenu->Append(Minimal_Load_Perspective, _("Load...\tCtrl+L"), _("Apply a saved window layout"));
@@ -74,7 +74,7 @@ MyFrame::MyFrame(const wxString& title, wxString const &installationDirectory)
     // now append the freshly created menu to the menu bar...
     wxMenuBar *menuBar = new wxMenuBar();
     menuBar->Append(fileMenu, "&File");
-    menuBar->Append(userMenu, "&User");
+//    menuBar->Append(userMenu, "&User");
     menuBar->Append(perspectiveMenu, "&Perspective");
     menuBar->Append(helpMenu, "&Help");
 
