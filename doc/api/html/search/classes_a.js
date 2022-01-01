@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['user',['User',['../class_user.html',1,'']]]
+  ['zone',['Zone',['../struct_zone.html',1,'']]],
+  ['zonegrid',['ZoneGrid',['../class_zone_grid.html',1,'']]]
 ];

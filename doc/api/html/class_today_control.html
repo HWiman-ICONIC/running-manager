@@ -72,6 +72,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>GUI grid showing training a specific day.  
+ <a href="class_today_control.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_today_control_8h_source.html">TodayControl.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TodayControl:</div>
@@ -85,11 +88,15 @@ Inheritance diagram for TodayControl:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a915775b5d0d713f4c2c4e5c2541180b7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_today_control.html#a915775b5d0d713f4c2c4e5c2541180b7">TodayControl</a> (wxWindow *pParent, <a class="el" href="struct_plan.html">Plan</a> &amp;plan, wxDateTime &amp;day, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;unit)</td></tr>
+<tr class="memdesc:a915775b5d0d713f4c2c4e5c2541180b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a915775b5d0d713f4c2c4e5c2541180b7">More...</a><br /></td></tr>
 <tr class="separator:a915775b5d0d713f4c2c4e5c2541180b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19a85f27107f309cd84926a992b8bc93"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_today_control.html#a19a85f27107f309cd84926a992b8bc93">Update</a> (<a class="el" href="struct_plan.html">Plan</a> &amp;plan, wxDateTime const &amp;day, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;unit, int const &amp;index)</td></tr>
+<tr class="memdesc:a19a85f27107f309cd84926a992b8bc93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the control with new date.  <a href="#a19a85f27107f309cd84926a992b8bc93">More...</a><br /></td></tr>
 <tr class="separator:a19a85f27107f309cd84926a992b8bc93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>GUI grid showing training a specific day. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a915775b5d0d713f4c2c4e5c2541180b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a915775b5d0d713f4c2c4e5c2541180b7">&#9670;&nbsp;</a></span>TodayControl()</h2>
 
@@ -127,6 +134,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pParent</td><td>Parent </td></tr>
+    <tr><td class="paramname">plan</td><td><a class="el" href="struct_plan.html" title="A training plan. ">Plan</a> to extract date from </td></tr>
+    <tr><td class="paramname">day</td><td>Date to extract </td></tr>
+    <tr><td class="paramname">unit</td><td>Unit (km|miles) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -168,6 +186,17 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Update the control with new date. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plan</td><td><a class="el" href="struct_plan.html" title="A training plan. ">Plan</a> to extract date from </td></tr>
+    <tr><td class="paramname">day</td><td>Date to extract </td></tr>
+    <tr><td class="paramname">unit</td><td>Unit (km|miles) </td></tr>
+    <tr><td class="paramname">index</td><td>0 for first training this date, 1 for second training the same date etc. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

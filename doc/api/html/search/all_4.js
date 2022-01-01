@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['date',['date',['../struct_plan.html#a8b6300ab56a7d8fbe6a9e644349e9e26',1,'Plan::date()'],['../struct_training.html#a15270fd7639a43fc935dcfef9de007af',1,'Training::date()']]],
-  ['defines_2eh',['Defines.h',['../_defines_8h.html',1,'']]],
-  ['description',['description',['../struct_section_base.html#ae223cf1802f11388716a2b704b6b3aff',1,'SectionBase::description()'],['../struct_training_type.html#a19c6f8809b8ce0e26927b5839cdf8447',1,'TrainingType::description()'],['../struct_zone.html#ae97fa29ae5996fd4abd98cea6e063cda',1,'Zone::description()']]],
-  ['distance',['distance',['../struct_plan.html#a4592a2841bd07f2b4330d00754af04cb',1,'Plan::distance()'],['../struct_section_distance.html#ab3773dccab775fcadc55308c2443f02b',1,'SectionDistance::distance()'],['../class_user.html#a8f5ed87542832c4e5237252c0d0889d0',1,'User::distance()']]],
-  ['distancestring',['distanceString',['../struct_plan.html#a27095119ff87a0f2fed1626f59279782',1,'Plan']]],
-  ['draggrid',['DragGrid',['../class_drag_grid.html',1,'DragGrid'],['../class_drag_grid.html#ab8647549579a673f077cca9dbb96c20c',1,'DragGrid::DragGrid()']]],
-  ['dt',['dt',['../struct_event_data.html#a75fac8c1a86ec3a94768280427c9e78a',1,'EventData']]]
+  ['espeedtype',['ESpeedType',['../_defines_8h.html#ad36b82275fa2c22480028f7071894d02',1,'Defines.h']]],
+  ['event_2eh',['Event.h',['../_event_8h.html',1,'']]],
+  ['eventdata',['EventData',['../struct_event_data.html',1,'']]],
+  ['evt_5frm_5fcommand',['EVT_RM_COMMAND',['../_event_8h.html#a5b9e14697a9542b64102325cb856b7cd',1,'Event.h']]]
 ];

@@ -949,3 +949,16 @@ void MyApp::OnSetPace(wxCommandEvent& WXUNUSED(e))
 //{
 //	EventData* evtData = (EventData*) e.GetClientData();
 //}
+
+TodayControl* MyApp::GetTodayControl() const
+{
+    return today;
+}
+
+boost::shared_ptr<wxAuiManager> MyApp::GetAuiManager() const
+{
+    if (!frame) {
+        return boost::shared_ptr<wxAuiManager>();
+    }
+    return frame->GetAuiManager();
+}

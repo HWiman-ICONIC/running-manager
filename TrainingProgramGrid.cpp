@@ -11,7 +11,6 @@ wxEND_EVENT_TABLE()
 
 void TrainingProgramGrid::OnDateSelected( wxCommandEvent &e )
 {
-
     EventData *evtData = (EventData*) e.GetClientData();
     wxLogMessage(_("Date selected: %s"), evtData->dt.FormatISODate());
 }

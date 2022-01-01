@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['espeedtype',['ESpeedType',['../_defines_8h.html#ad36b82275fa2c22480028f7071894d02',1,'Defines.h']]],
-  ['event_2eh',['Event.h',['../_event_8h.html',1,'']]],
-  ['eventdata',['EventData',['../struct_event_data.html',1,'']]],
-  ['evt_5frm_5fcommand',['EVT_RM_COMMAND',['../_event_8h.html#a5b9e14697a9542b64102325cb856b7cd',1,'Event.h']]]
+  ['ffr',['FFR',['../_defines_8h.html#a05862c18b6dbfd0564463690a50823a1a77147f19872b955e1f4ca267e61f85c6',1,'Defines.h']]],
+  ['fr',['FR',['../_defines_8h.html#a05862c18b6dbfd0564463690a50823a1ab903e5b3c0d7dde47e17f3b8848abc2c',1,'Defines.h']]]
 ];

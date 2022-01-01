@@ -1,6 +1,10 @@
 #include	<Week.h>
 #include	<wx/log.h>
 
+Week::Week()
+{
+}
+
 wxString Week::ToString()
 {
     return wxString::Format(_("Week %d"), number);

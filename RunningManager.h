@@ -16,27 +16,61 @@
 #include	<map>
 #include	<vector>
 
+/**
+ * @brief The RunningManager application
+*/
 class MyApp : public wxApp {
 public:
+    /**
+     * @brief Constructor
+    */
     MyApp();
+
+    /**
+     * @brief Destructor
+    */
     virtual ~MyApp();
+
+    /**
+     * @brief Initialize application
+     * @return True on success
+    */
     virtual bool OnInit();
+
+    /**
+     * @brief Close application
+     * @return 0 on success
+    */
     virtual int OnExit();
 
-    TodayControl* GetTodayControl() {
-        return today;
-    }
+    /**
+     * @brief Get the panel for todays training
+     * @return
+    */
+    TodayControl* GetTodayControl() const;
+
+    /**
+     * @brief Update current date
+     * @param date Current date
+     * @param sender Sender does not need to be updated
+     * @param index 0 if single activity this day, 1 if second activity this day is wanted.
+    */
     void UpdateCurrentDate(wxDateTime const& date, wxWindow* sender, int index);
+
+    /**
+     * @brief Update lactate threshold heart rate
+    */
     void UpdatePulse();
 
+    /**
+     * @brief Get a map with all perspectives.
+     *
+     * First entry is descriptive name of perspective, second entry is initialization string to open and open the panes for the named perspective.
+     * @return Map with perspectives.
+    */
     std::map<wxString, wxString>& GetPerspectives();
 private:
-    boost::shared_ptr<wxAuiManager> GetAuiManager() {
-        if (!frame) {
-            return boost::shared_ptr<wxAuiManager>();
-        }
-        return frame->GetAuiManager();
-    }
+    boost::shared_ptr<wxAuiManager> GetAuiManager() const;
     bool ReadPerspective(int const& n);
     void SavePerspectives();
     void ReadPaces(wxString const& user);

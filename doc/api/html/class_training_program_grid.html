@@ -73,6 +73,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>GUI grid for the entire training program.  
+ <a href="class_training_program_grid.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_training_program_grid_8h_source.html">TrainingProgramGrid.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TrainingProgramGrid:</div>
@@ -86,26 +89,29 @@ Inheritance diagram for TrainingProgramGrid:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a61f55136fe8a4f89360d484045ef6522"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#a61f55136fe8a4f89360d484045ef6522">TrainingProgramGrid</a> (wxWindow *pParent, <a class="el" href="struct_plan.html">Plan</a> *pt, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;outUnit)</td></tr>
+<tr class="memdesc:a61f55136fe8a4f89360d484045ef6522"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a61f55136fe8a4f89360d484045ef6522">More...</a><br /></td></tr>
 <tr class="separator:a61f55136fe8a4f89360d484045ef6522"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaed7a679864c5bff1eff80a0dc05f55f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#aaed7a679864c5bff1eff80a0dc05f55f">Update</a> (<a class="el" href="struct_plan.html">Plan</a> *pt, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;outUnit)</td></tr>
+<tr class="memdesc:aaed7a679864c5bff1eff80a0dc05f55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recreate grid from new plan.  <a href="#aaed7a679864c5bff1eff80a0dc05f55f">More...</a><br /></td></tr>
 <tr class="separator:aaed7a679864c5bff1eff80a0dc05f55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98e5ed018b503b192374436d1d7da845"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#a98e5ed018b503b192374436d1d7da845">GetRow</a> (wxDateTime const &amp;date)</td></tr>
+<tr class="memdesc:a98e5ed018b503b192374436d1d7da845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get row number for this date.  <a href="#a98e5ed018b503b192374436d1d7da845">More...</a><br /></td></tr>
 <tr class="separator:a98e5ed018b503b192374436d1d7da845"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af130d1242057bead37c64beb553a29b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#af130d1242057bead37c64beb553a29b1">OnLabelLeftClick</a> (wxGridEvent &amp;e)</td></tr>
+<tr class="memdesc:af130d1242057bead37c64beb553a29b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Highlight selected line and update todays training with selected activity.  <a href="#af130d1242057bead37c64beb553a29b1">More...</a><br /></td></tr>
 <tr class="separator:af130d1242057bead37c64beb553a29b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb89b3c6d80c5022b9714ae3e1187e4e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#abb89b3c6d80c5022b9714ae3e1187e4e">OnDateSelected</a> (wxCommandEvent &amp;e)</td></tr>
+<tr class="memdesc:abb89b3c6d80c5022b9714ae3e1187e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>Unused</em>  <a href="#abb89b3c6d80c5022b9714ae3e1187e4e">More...</a><br /></td></tr>
 <tr class="separator:abb89b3c6d80c5022b9714ae3e1187e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e6675218eb51c1eb60f110f982a20fb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#a5e6675218eb51c1eb60f110f982a20fb">wxDECLARE_EVENT_TABLE</a> ()</td></tr>
-<tr class="separator:a5e6675218eb51c1eb60f110f982a20fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:ae76c18d1f232954af08fa05d87fa2c91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#ae76c18d1f232954af08fa05d87fa2c91">todayLine</a></td></tr>
 <tr class="separator:ae76c18d1f232954af08fa05d87fa2c91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa39864bb8de1c2952ae23407376abf8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_training_program_grid.html#aa39864bb8de1c2952ae23407376abf8b">bIsCreated</a></td></tr>
-<tr class="separator:aa39864bb8de1c2952ae23407376abf8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>GUI grid for the entire training program. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a61f55136fe8a4f89360d484045ef6522"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a61f55136fe8a4f89360d484045ef6522">&#9670;&nbsp;</a></span>TrainingProgramGrid()</h2>
 
@@ -138,6 +144,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pParent</td><td>Parent </td></tr>
+    <tr><td class="paramname">pt</td><td><a class="el" href="struct_plan.html" title="A training plan. ">Plan</a> to populate from </td></tr>
+    <tr><td class="paramname">outUnit</td><td>km|miles </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -157,6 +173,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get row number for this date. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">date</td><td>Date </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Row number </dd></dl>
+
 </div>
 </div>
 <a id="abb89b3c6d80c5022b9714ae3e1187e4e"></a>
@@ -175,6 +200,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p><em>Unused</em> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="af130d1242057bead37c64beb553a29b1"></a>
@@ -192,6 +225,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Highlight selected line and update todays training with selected activity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>event </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -221,40 +262,18 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a5e6675218eb51c1eb60f110f982a20fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e6675218eb51c1eb60f110f982a20fb">&#9670;&nbsp;</a></span>wxDECLARE_EVENT_TABLE()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TrainingProgramGrid::wxDECLARE_EVENT_TABLE </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Recreate grid from new plan. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pt</td><td><a class="el" href="struct_plan.html" title="A training plan. ">Plan</a> </td></tr>
+    <tr><td class="paramname">outUnit</td><td>km|miles </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa39864bb8de1c2952ae23407376abf8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa39864bb8de1c2952ae23407376abf8b">&#9670;&nbsp;</a></span>bIsCreated</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool TrainingProgramGrid::bIsCreated</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ae76c18d1f232954af08fa05d87fa2c91"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae76c18d1f232954af08fa05d87fa2c91">&#9670;&nbsp;</a></span>todayLine</h2>
 

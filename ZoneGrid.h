@@ -6,6 +6,10 @@
 #include	<Defines.h>
 #include	<Zone.h>
 
+/**
+ * @brief GUI for zones.
+ * @sa Zone
+*/
 class ZoneGrid : public wxGrid {
 public:
 

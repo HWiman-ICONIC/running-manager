@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['maxpace',['maxPace',['../struct_zone.html#a3ecfe60580066bf9459ebed6530b9c4b',1,'Zone']]],
-  ['maxpercent',['maxPercent',['../struct_zone.html#ac9631d5b04f7e023c830fb5ca67e95bd',1,'Zone']]],
-  ['minpace',['minPace',['../struct_zone.html#ae6d9129bce44255258bd83746e609f20',1,'Zone']]],
-  ['minpercent',['minPercent',['../struct_zone.html#ab99737758760f9344dbb0b64afe498fe',1,'Zone']]]
+  ['nrepetitions',['nRepetitions',['../struct_section_group.html#a44e906f9bfaffa6ae40383dbfe841ffc',1,'SectionGroup']]],
+  ['number',['number',['../struct_week.html#ab57e8b5c907f15c918871240bc1f96b6',1,'Week']]]
 ];

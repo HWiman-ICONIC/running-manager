@@ -5,16 +5,36 @@
 #include	<wx/string.h>
 #include	<vector>
 
+/**
+ * @brief Type of training
+*/
 struct TrainingType {
+    /**
+     * @brief Default constructor
+    */
     TrainingType() {}
+
+    /**
+     * @brief Create a training type with all intensisties
+     * @param type Type of training, e.g. Recovery
+     * @param shortName Human readable short name
+     * @param description Human readable description
+     * @param format Format string
+     * @todo Use boost::property_tree and xml for formatting instead
+    */
     TrainingType( PTTrainingType type, wxString const &shortName, wxString const &description, wxString const &format );
 
-    virtual ~TrainingType() {
-        intensity.clear();
-    }
+    /**
+     * @brief Destructor
+    */
+    virtual ~TrainingType();
 
+    /**
+     * @brief Create from format string
+     * @param format format string
+     * @return
+    */
     bool Create( wxString const &format );
-
 
     wxString shortName;
     wxString description;

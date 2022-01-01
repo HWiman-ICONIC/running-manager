@@ -74,6 +74,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>GUI for weekdays.  
+ <a href="class_week_day.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_week_day_8h_source.html">WeekDay.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for WeekDay:</div>
@@ -87,14 +90,19 @@ Inheritance diagram for WeekDay:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa8ff9ba94fa3b156cc3363622511ef8a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_week_day.html#aa8ff9ba94fa3b156cc3363622511ef8a">WeekDay</a> (wxWindow *parent, <a class="el" href="struct_plan.html">Plan</a> &amp;plan)</td></tr>
+<tr class="memdesc:aa8ff9ba94fa3b156cc3363622511ef8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aa8ff9ba94fa3b156cc3363622511ef8a">More...</a><br /></td></tr>
 <tr class="separator:aa8ff9ba94fa3b156cc3363622511ef8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad869d4ff8de96ea1b20c4dc8cd992f36"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_week_day.html#ad869d4ff8de96ea1b20c4dc8cd992f36">~WeekDay</a> (void)</td></tr>
+<tr class="memdesc:ad869d4ff8de96ea1b20c4dc8cd992f36"><td class="mdescLeft">&#160;</td><td class="mdescRight">Desctructor.  <a href="#ad869d4ff8de96ea1b20c4dc8cd992f36">More...</a><br /></td></tr>
 <tr class="separator:ad869d4ff8de96ea1b20c4dc8cd992f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a818a351144412a6a35afea8690c666"><td class="memItemLeft" align="right" valign="top">wxArrayInt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_week_day.html#a2a818a351144412a6a35afea8690c666">GetWeekdayOrder</a> ()</td></tr>
+<tr class="memdesc:a2a818a351144412a6a35afea8690c666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return current weekday order.  <a href="#a2a818a351144412a6a35afea8690c666">More...</a><br /></td></tr>
 <tr class="separator:a2a818a351144412a6a35afea8690c666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb8719e75b1b097f793143ba089a2bc0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_week_day.html#aeb8719e75b1b097f793143ba089a2bc0">Update</a> (<a class="el" href="struct_plan.html">Plan</a> &amp;plan)</td></tr>
+<tr class="memdesc:aeb8719e75b1b097f793143ba089a2bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the plan according to current weekday order.  <a href="#aeb8719e75b1b097f793143ba089a2bc0">More...</a><br /></td></tr>
 <tr class="separator:aeb8719e75b1b097f793143ba089a2bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6d6db95a33e67a0aeddeca761e494da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_week_day.html#ab6d6db95a33e67a0aeddeca761e494da">SetWeekdayOrder</a> (wxArrayInt order)</td></tr>
+<tr class="memdesc:ab6d6db95a33e67a0aeddeca761e494da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set week day order.  <a href="#ab6d6db95a33e67a0aeddeca761e494da">More...</a><br /></td></tr>
 <tr class="separator:ab6d6db95a33e67a0aeddeca761e494da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -111,7 +119,10 @@ Protected Member Functions</h2></td></tr>
 <tr class="memitem:a4d570fb2448089f6e59ac50e03e19664"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_week_day.html#a4d570fb2448089f6e59ac50e03e19664">_Init</a> ()</td></tr>
 <tr class="separator:a4d570fb2448089f6e59ac50e03e19664"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>GUI for weekdays. </p>
+<p>Defines which trainings appear on which week days. Contains a <a class="el" href="class_drag_grid.html" title="Grid which can change order of columns. ">DragGrid</a> to enable change order of weekdays. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa8ff9ba94fa3b156cc3363622511ef8a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa8ff9ba94fa3b156cc3363622511ef8a">&#9670;&nbsp;</a></span>WeekDay()</h2>
 
@@ -138,6 +149,15 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Parent </td></tr>
+    <tr><td class="paramname">plan</td><td>training plan </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad869d4ff8de96ea1b20c4dc8cd992f36"></a>
@@ -163,6 +183,14 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Desctructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname"></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -207,6 +235,9 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Return current weekday order. </p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
 </div>
 </div>
 <a id="ab6d6db95a33e67a0aeddeca761e494da"></a>
@@ -225,6 +256,14 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set week day order. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">order</td><td>week day order </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aeb8719e75b1b097f793143ba089a2bc0"></a>
@@ -242,6 +281,15 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Update the plan according to current weekday order. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">plan</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

@@ -1,8 +1,12 @@
 var searchData=
 [
-  ['date',['date',['../struct_plan.html#a8b6300ab56a7d8fbe6a9e644349e9e26',1,'Plan::date()'],['../struct_training.html#a15270fd7639a43fc935dcfef9de007af',1,'Training::date()']]],
-  ['description',['description',['../struct_section_base.html#ae223cf1802f11388716a2b704b6b3aff',1,'SectionBase::description()'],['../struct_training_type.html#a19c6f8809b8ce0e26927b5839cdf8447',1,'TrainingType::description()'],['../struct_zone.html#ae97fa29ae5996fd4abd98cea6e063cda',1,'Zone::description()']]],
-  ['distance',['distance',['../struct_plan.html#a4592a2841bd07f2b4330d00754af04cb',1,'Plan::distance()'],['../struct_section_distance.html#ab3773dccab775fcadc55308c2443f02b',1,'SectionDistance::distance()'],['../class_user.html#a8f5ed87542832c4e5237252c0d0889d0',1,'User::distance()']]],
-  ['distancestring',['distanceString',['../struct_plan.html#a27095119ff87a0f2fed1626f59279782',1,'Plan']]],
-  ['dt',['dt',['../struct_event_data.html#a75fac8c1a86ec3a94768280427c9e78a',1,'EventData']]]
+  ['gdistance',['gDistance',['../_defines_8h.html#aa0e92eb63990dde98f394849a9788b5f',1,'Defines.h']]],
+  ['gintensitycolor',['gIntensityColor',['../_defines_8h.html#ae0c297e7bb160251c72798d8d51d3226',1,'Defines.h']]],
+  ['glevel',['gLevel',['../_defines_8h.html#a0fd9f2f5fc7085b635f963474c044b0a',1,'Defines.h']]],
+  ['gphase',['gPhase',['../_defines_8h.html#a52b4b54606e4aa3947c0c2359d2788c5',1,'Defines.h']]],
+  ['gtrainingintensity',['gTrainingIntensity',['../_defines_8h.html#a364c7a88afcb192fa2d5db8c0d978f4a',1,'Defines.h']]],
+  ['gtrainingtype',['gTrainingType',['../_training_type_8h.html#aa8acf6ae3a9b0d7312db8e377ef83089',1,'TrainingType.h']]],
+  ['gunit',['gUnit',['../_defines_8h.html#ac5893edbb5d90cd5e245a19f239107df',1,'Defines.h']]],
+  ['gzoneintensity',['gZoneIntensity',['../_defines_8h.html#ae80a82b95b93c21697f3f9d99078c6a5',1,'Defines.h']]],
+  ['gzonemap',['gZoneMap',['../_zone_8h.html#a7279023e30a223f9227913adb3300a7e',1,'Zone.h']]]
 ];
