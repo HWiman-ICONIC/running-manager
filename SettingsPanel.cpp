@@ -17,10 +17,10 @@ CreateTrainingProgramDialog::CreateTrainingProgramDialog(wxWindow *pParent, PTUn
     wxBoxSizer *pRadioSizer = new wxBoxSizer(wxHORIZONTAL);
     pParentSizer->Add( pRadioSizer );
 
-    distances.Add(wxString("&")+gDistance[PTD_5KM]);
-    distances.Add(wxString("&")+gDistance[PTD_10KM]);
-    distances.Add(gDistance[PTD_HALF_MARATHON]);
-    distances.Add(gDistance[PTD_MARATHON]);
+    distances.Add(wxString("&")+gDistance[(int)PTDistance::PTD_5KM]);
+    distances.Add(wxString("&")+gDistance[(int)PTDistance::PTD_10KM]);
+    distances.Add(gDistance[(int)PTDistance::PTD_HALF_MARATHON]);
+    distances.Add(gDistance[(int)PTDistance::PTD_MARATHON]);
     distance = new wxRadioBox(this, wxID_ANY, _("Distance"), wxDefaultPosition, wxDefaultSize, distances, 0, wxVERTICAL);
     //distance->SetBackgroundColour(wxColour(255,255,255));
     distance->SetSelection((int)adistance);

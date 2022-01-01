@@ -9,53 +9,104 @@
 #include	<wx/grid.h>
 #include	<wx/stattext.h>
 
-namespace rm
-{
-	class Calculator : public wxAuiNotebook
-	{
-	public:
-		class Speed : public wxPanel
-		{
-		public:
-			
+namespace rm {
+/**
+ * @brief GUI for predictor and unit conversion
+*/
+class Calculator : public wxAuiNotebook {
+public:
+    /**
+     * @brief GUI panel for unit conversion
+    */
+    class Speed : public wxPanel {
+    public:
 
-			Speed( wxWindow *pParent );
+        /**
+         * @brief Constructor
+         * @param pParent Parent window
+        */
+        Speed( wxWindow *pParent );
 
-			void OnMinPerKm( wxSpinEvent &e );
-			void OnMinPerMile( wxSpinEvent &e );
+        /**
+         * @brief Convert from min/km
+         * @param e Event
+        */
+        void OnMinPerKm( wxSpinEvent &e );
 
-			void Update(ESpeedType const &sender );
+        /**
+         * @brief Convert from min/mile
+         * @param e
+        */
+        void OnMinPerMile( wxSpinEvent &e );
 
-			wxSpinCtrl *cMinPerKmMinSpin;
-			wxSpinCtrl *cMinPerKmSecSpin;
-			wxSpinCtrl *cMinPerMileMinSpin;
-			wxSpinCtrl *cMinPerMileSecSpin;
-			wxTextCtrl *cKmPerHour;
-			wxGrid *cDistanceGrid;
-		};
+        /**
+         * @brief Update after new event
+         * @param sender Convert from this
+        */
+        void Update(ESpeedType const &sender );
 
-		class Predictor : public wxPanel {
-		public:
-			Predictor( wxWindow *pParent );
-			wxArrayString cDistanceNames;
-			std::vector<double> cDistances;
-			void OnHour( wxSpinEvent &e );
+        wxSpinCtrl *cMinPerKmMinSpin;
+        wxSpinCtrl *cMinPerKmSecSpin;
+        wxSpinCtrl *cMinPerMileMinSpin;
+        wxSpinCtrl *cMinPerMileSecSpin;
+        wxTextCtrl *cKmPerHour;
+        wxGrid *cDistanceGrid;
+    };
 
-			void OnMinute( wxSpinEvent &e );
+    /**
+     * @brief GUI for time predictor for different distances
+    */
+    class Predictor : public wxPanel {
+    public:
+        /**
+         * @brief Constructor
+         * @param pParent Parent
+        */
+        Predictor( wxWindow *pParent );
 
-			void OnSecond( wxSpinEvent &e );
+        /**
+         * @brief Handle changed hour
+         * @param e Event
+        */
+        void OnHour( wxSpinEvent &e );
 
-			void OnDistance( wxCommandEvent &e );
+        /**
+         * @brief Handle changed minute
+         * @param e Event
+        */
+        void OnMinute( wxSpinEvent &e );
 
-			void Update();
+        /**
+         * @brief Handle changed second
+         * @param e Event
+        */
+        void OnSecond( wxSpinEvent &e );
 
-			wxComboBox *cpSelectedDistance;
-			wxSpinCtrl *cHourSpin;
-			wxSpinCtrl *cMinuteSpin;
-			wxSpinCtrl *cSecondSpin;
-			wxStaticText *cResultText;
-		};
+        /**
+         * @brief Handle changed distance
+         * @param e
+        */
+        void OnDistance( wxCommandEvent &e );
 
-		Calculator( wxWindow *pParent );
-	};
+        /**
+         * @brief Update after change
+        */
+        void Update();
+
+        wxArrayString cDistanceNames;
+        std::vector<double> cDistances;
+
+        wxComboBox *cpSelectedDistance;
+        wxSpinCtrl *cHourSpin;
+        wxSpinCtrl *cMinuteSpin;
+        wxSpinCtrl *cSecondSpin;
+        wxStaticText *cResultText;
+    };
+
+    /**
+     * @brief Constructor
+     * @param pParent Parent
+    */
+    Calculator( wxWindow *pParent );
+};
 }

@@ -14,19 +14,19 @@ Plan::Plan(PTDistance distance, PTLevel level, wxDateTime date, wxArrayInt weekD
     }
 
     switch (distance) {
-    case PTD_5KM:
+    case PTDistance::PTD_5KM:
         programLength = wxDateSpan(0,0,9,0);
         break;
 
-    case PTD_10KM:
+    case PTDistance::PTD_10KM:
         programLength = wxDateSpan(0,0,12,0);
         break;
 
-    case PTD_HALF_MARATHON:
+    case PTDistance::PTD_HALF_MARATHON:
         programLength = wxDateSpan(0,0,15,0);
         break;
 
-    case PTD_MARATHON:
+    case PTDistance::PTD_MARATHON:
         programLength = wxDateSpan(0,0,18,0);
         break;
     }
@@ -63,7 +63,7 @@ void Plan::CreateProgram(PTUnit const &unit)
 void Plan::CreatePlan()
 {
     switch (distance) {
-    case PTD_5KM: {
+    case PTDistance::PTD_5KM: {
         switch (level) {
         case PTL_LOW: {
             SetPlan(wxString("\
@@ -110,7 +110,7 @@ void Plan::CreatePlan()
     }
     break;
 
-    case PTD_10KM: {
+    case PTDistance::PTD_10KM: {
         switch (level) {
         case PTL_LOW: {
             SetPlan(wxString("\
@@ -166,7 +166,7 @@ void Plan::CreatePlan()
     }
     break;
 
-    case PTD_HALF_MARATHON: {
+    case PTDistance::PTD_HALF_MARATHON: {
         switch (level) {
         case PTL_LOW: {
             SetPlan(wxString("\
@@ -232,7 +232,7 @@ void Plan::CreatePlan()
     }
     break;
 
-    case PTD_MARATHON: {
+    case PTDistance::PTD_MARATHON: {
         switch(level) {
         case PTL_LOW: {
             SetPlan(wxString("\
@@ -474,7 +474,7 @@ Plan::Plan()
 
 wxString Plan::ToString()
 {
-    return wxString::Format(_("Plan for %s, %s level. Dates %s to %s (%d weeks)"), gDistance[distance], gLevel[level], startTime.FormatISODate(), date.FormatISODate(), (int)weeks.size());
+    return wxString::Format(_("Plan for %s, %s level. Dates %s to %s (%d weeks)"), gDistance[(int)distance], gLevel[level], startTime.FormatISODate(), date.FormatISODate(), (int)weeks.size());
 }
 
 std::list<Training*> Plan::GetTraining( wxDateTime const &day )

@@ -8,64 +8,87 @@
 
 #define RM_DATE_SELECTED 1
 
-enum PTDistance {
-    PTD_5KM = 0,
-    PTD_10KM,
-    PTD_HALF_MARATHON,
-    PTD_MARATHON
+/**
+ * @brief Race distance
+*/
+enum class PTDistance {
+    PTD_5KM = 0,        //!< 5 km
+    PTD_10KM,           //!< 10 km
+    PTD_HALF_MARATHON,  //!< Half marathon
+    PTD_MARATHON        //!< Marathon
 };
 
+/**
+ * @brief Training program level
+*/
 enum PTLevel {
-    PTL_LOW = 0,
-    PTL_MEDIUM,
-    PTL_HIGH
+    PTL_LOW = 0,        //!< Low level
+    PTL_MEDIUM,         //!< Medium level
+    PTL_HIGH            //!< High level
 };
 
+/**
+ * @brief Training type
+*/
 enum PTTrainingType {
-    NONE = 0,
-    RR,
-    FR,
-    LR,
-    FFR,
-    TR,
-    CIR,
-    LRSP,
-    LRFF,
-    SPR,
-    HRR,
-    SIR,
-    LIR,
-    MIR,
-    HM,
-    M,
-    KM10,
-    KM5
+    NONE = 0,   //!< Rst
+    RR,         //!< Recovery Run
+    FR,         //!< Foundation run
+    LR,         //!< Long run
+    FFR,        //!< Fast finish run
+    TR,         //!< Tempo run
+    CIR,        //!< Cruise interval
+    LRSP,       //!< Long run speed play
+    LRFF,       //!< Long run fast finish
+    SPR,        //!< Speed play
+    HRR,        //!< Hill repetition
+    SIR,        //!< Short interval
+    LIR,        //!< Long interval
+    MIR,        //!< MIxed interval
+    HM,         //!< Half marathon
+    M,          //!< Marathon
+    KM10,       //!< 10 km
+    KM5         //!< 5 km
 };
 
+/**
+ * @brief Intensity zones
+*/
 enum PTZone {
-    ZONE0 = 0,
-    ZONE1,
-    ZONE2,
-    ZONE3,
-    ZONE4,
-    ZONE5
+    ZONE0 = 0,  //!< No zone
+    ZONE1,      //!< Zone 1
+    ZONE2,      //!< Zone 2
+    ZONE3,      //!< Zone 3
+    ZONE4,      //!< Zone 4
+    ZONE5       //!< Zone 5
 };
 
+/**
+ * @brief Unit
+*/
 enum PTUnit {
-    KM =  0,
-    MILES,
-    TIME
+    KM =  0,    //!< Kilometers
+    MILES,      //!< Miles
+    TIME        //!< Time
 };
 
+/**
+ * @brief Inensity of each zone
+ * @sa PTZone
+*/
 static PTLevel gZoneIntensity[] = {
-    PTL_LOW,
-    PTL_LOW,
-    PTL_LOW,
-    PTL_MEDIUM,
-    PTL_HIGH,
-    PTL_HIGH
+    PTL_LOW,        //!< No zone
+    PTL_LOW,        //!< Zone 1
+    PTL_LOW,        //!< Zone 2
+    PTL_MEDIUM,     //!< Zone 3
+    PTL_HIGH,       //!< Zone 4
+    PTL_HIGH        //!< Zone 5
 };
 
+/**
+ * @brief Intensity of each training type
+ * @sa PTTrainingType
+*/
 static PTLevel gTrainingIntensity[] = {
     PTL_LOW,
     PTL_LOW,
@@ -87,10 +110,13 @@ static PTLevel gTrainingIntensity[] = {
     PTL_HIGH
 };
 
+/**
+ * @brief Training program phase
+*/
 enum PTPhase {
-    PTP_BASE,
-    PTP_PEAK,
-    PTP_TAPER
+    PTP_BASE,   //!< Initial base phase
+    PTP_PEAK,   //!< Middle peak phase
+    PTP_TAPER   //!< Final taper phase
 };
 
 static wxString gPhase[] = {
@@ -125,6 +151,7 @@ static wxColour gIntensityColor[] = {
     wxColour(220,220,255)
 };
 
+// GUI item constants
 enum {
     // menu items
     Minimal_Quit = wxID_EXIT,
@@ -146,12 +173,18 @@ enum {
     Minimal_Delete_User
 };
 
+/**
+ * @brief Speed unit
+*/
 enum ESpeedType {
-    MIN_PER_KM,
-    MIN_PER_MILE,
-    KM_PER_HOUR
+    MIN_PER_KM, //!< min/km
+    MIN_PER_MILE, //!< min/mile
+    KM_PER_HOUR //!< km/h
 };
 
+/**
+ * @brief Data to submit with date events
+*/
 struct EventData : public wxClientData {
     wxDateTime dt;
 };

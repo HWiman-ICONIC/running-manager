@@ -7,7 +7,7 @@ UserPtr User::cpCurrentUser;
 User::User() :
     unit(KM),
     level(PTL_LOW),
-    distance(PTD_10KM),
+    distance(PTDistance::PTD_10KM),
     pulse(160),
     use_pace(false),
     raceDate(wxDateTime::Today()+wxDateSpan(0,0,11)),
