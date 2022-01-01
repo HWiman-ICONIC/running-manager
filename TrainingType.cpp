@@ -8,6 +8,12 @@ TrainingType::TrainingType( PTTrainingType type, wxString const &shortName, wxSt
     Create( format );
 }
 
+TrainingType::~TrainingType()
+{
+    intensity.clear();
+}
+
+
 bool TrainingType::Create( wxString const &format )
 {
     IntensityPtr i;

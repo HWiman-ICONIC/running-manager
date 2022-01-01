@@ -74,20 +74,27 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A training/activity.  
+ <a href="struct_training.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_training_8h_source.html">Training.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a4475a644a316c3c42655c57a5796b8f8"><td class="memItemLeft" align="right" valign="top">wxString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_training.html#a4475a644a316c3c42655c57a5796b8f8">ToString</a> (bool includeDate, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;unit)</td></tr>
+<tr class="memdesc:a4475a644a316c3c42655c57a5796b8f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return human readable string.  <a href="#a4475a644a316c3c42655c57a5796b8f8">More...</a><br /></td></tr>
 <tr class="separator:a4475a644a316c3c42655c57a5796b8f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad601a983b20cd167f73573e115b495aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_training.html#ad601a983b20cd167f73573e115b495aa">GetTime</a> (wxTimeSpan &amp;minTime, wxTimeSpan &amp;maxTime, wxTimeSpan &amp;avgSpan)</td></tr>
+<tr class="memdesc:ad601a983b20cd167f73573e115b495aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get min, max and average time for this activity.  <a href="#ad601a983b20cd167f73573e115b495aa">More...</a><br /></td></tr>
 <tr class="separator:ad601a983b20cd167f73573e115b495aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97ba391be72b127f99d386aca876db58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_training.html#a97ba391be72b127f99d386aca876db58">GetDistance</a> (double &amp;minDist, double &amp;maxDist, double &amp;avgDist, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;unit)</td></tr>
+<tr class="memdesc:a97ba391be72b127f99d386aca876db58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get min, max and average distance for this activity.  <a href="#a97ba391be72b127f99d386aca876db58">More...</a><br /></td></tr>
 <tr class="separator:a97ba391be72b127f99d386aca876db58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a1395b3e2e05d6bc875befc7a809e8b92"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_training.html#a1395b3e2e05d6bc875befc7a809e8b92">compareDate</a> (const <a class="el" href="struct_training.html">Training</a> &amp;a, const <a class="el" href="struct_training.html">Training</a> &amp;b)</td></tr>
+<tr class="memdesc:a1395b3e2e05d6bc875befc7a809e8b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper for sorting activities by date.  <a href="#a1395b3e2e05d6bc875befc7a809e8b92">More...</a><br /></td></tr>
 <tr class="separator:a1395b3e2e05d6bc875befc7a809e8b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -99,7 +106,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a15270fd7639a43fc935dcfef9de007af"><td class="memItemLeft" align="right" valign="top">wxDateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_training.html#a15270fd7639a43fc935dcfef9de007af">date</a></td></tr>
 <tr class="separator:a15270fd7639a43fc935dcfef9de007af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A training/activity. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a1395b3e2e05d6bc875befc7a809e8b92"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1395b3e2e05d6bc875befc7a809e8b92">&#9670;&nbsp;</a></span>compareDate()</h2>
 
@@ -129,10 +138,20 @@ Public Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Helper for sorting activities by date. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>First </td></tr>
+    <tr><td class="paramname">b</td><td>Second </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>First is before second </dd></dl>
 
 </div>
 </div>
@@ -174,6 +193,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get min, max and average distance for this activity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minDist</td><td>Min </td></tr>
+    <tr><td class="paramname">maxDist</td><td>Max </td></tr>
+    <tr><td class="paramname">avgDist</td><td>Average </td></tr>
+    <tr><td class="paramname">unit</td><td>km|miles </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad601a983b20cd167f73573e115b495aa"></a>
@@ -208,6 +238,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get min, max and average time for this activity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minTime</td><td>Min </td></tr>
+    <tr><td class="paramname">maxTime</td><td>Max </td></tr>
+    <tr><td class="paramname">avgSpan</td><td>Average </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a4475a644a316c3c42655c57a5796b8f8"></a>
@@ -235,6 +275,16 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Return human readable string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">includeDate</td><td>Include date in returned string </td></tr>
+    <tr><td class="paramname">unit</td><td>Unit (km|miles) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>human readable string </dd></dl>
 
 </div>
 </div>

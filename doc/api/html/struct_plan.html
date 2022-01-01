@@ -73,31 +73,39 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>A training plan.  
+ <a href="struct_plan.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_plan_8h_source.html">Plan.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a031ab495af5a99a883be2e09860086f1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a031ab495af5a99a883be2e09860086f1">Plan</a> ()</td></tr>
+<tr class="memdesc:a031ab495af5a99a883be2e09860086f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#a031ab495af5a99a883be2e09860086f1">More...</a><br /></td></tr>
 <tr class="separator:a031ab495af5a99a883be2e09860086f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bb9977bbea02b011e35fbc57ec7d70f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a4bb9977bbea02b011e35fbc57ec7d70f">Plan</a> (<a class="el" href="_defines_8h.html#ae99f020f1c9f5aab201e1542ae01d82b">PTDistance</a> <a class="el" href="struct_plan.html#a4592a2841bd07f2b4330d00754af04cb">distance</a>, <a class="el" href="_defines_8h.html#a0b57c30393fde0de2dac9c9f15cb5cf3">PTLevel</a> <a class="el" href="struct_plan.html#a2cb43a750ff998b51e883add0d9afb7c">level</a>, wxDateTime <a class="el" href="struct_plan.html#a8b6300ab56a7d8fbe6a9e644349e9e26">date</a>, wxArrayInt <a class="el" href="struct_plan.html#a11a85bbe234c17a32e5e61867951e15a">weekDayOrder</a>)</td></tr>
+<tr class="memdesc:a4bb9977bbea02b011e35fbc57ec7d70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a4bb9977bbea02b011e35fbc57ec7d70f">More...</a><br /></td></tr>
 <tr class="separator:a4bb9977bbea02b011e35fbc57ec7d70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a9987e68be81398a51b97cd3cfbb2d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a9a9987e68be81398a51b97cd3cfbb2d7">CreatePlan</a> ()</td></tr>
-<tr class="separator:a9a9987e68be81398a51b97cd3cfbb2d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2be9c5575ae6d7dce7efa492e32cc92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#ab2be9c5575ae6d7dce7efa492e32cc92">SetPlan</a> (wxString const &amp;s)</td></tr>
-<tr class="separator:ab2be9c5575ae6d7dce7efa492e32cc92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39814c433bbaa57eabfb6d3d117f3b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a39814c433bbaa57eabfb6d3d117f3b7f">CreateTraining</a> (wxString const &amp;sTraining, wxString const &amp;sIntensity, wxDateTime const &amp;day, <a class="el" href="struct_training.html">Training</a> &amp;training)</td></tr>
+<tr class="memdesc:a39814c433bbaa57eabfb6d3d117f3b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create training/activity from string.  <a href="#a39814c433bbaa57eabfb6d3d117f3b7f">More...</a><br /></td></tr>
 <tr class="separator:a39814c433bbaa57eabfb6d3d117f3b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a263f97c931f4acfdd57acee9a2a225fd"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="struct_training.html">Training</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a263f97c931f4acfdd57acee9a2a225fd">GetTraining</a> (wxDateTime const &amp;day)</td></tr>
+<tr class="memdesc:a263f97c931f4acfdd57acee9a2a225fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get training for this day.  <a href="#a263f97c931f4acfdd57acee9a2a225fd">More...</a><br /></td></tr>
 <tr class="separator:a263f97c931f4acfdd57acee9a2a225fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a435968af14126390f3f97f588f19bb87"><td class="memItemLeft" align="right" valign="top">wxString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a435968af14126390f3f97f588f19bb87">ToString</a> ()</td></tr>
+<tr class="memdesc:a435968af14126390f3f97f588f19bb87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert this plan to a string.  <a href="#a435968af14126390f3f97f588f19bb87">More...</a><br /></td></tr>
 <tr class="separator:a435968af14126390f3f97f588f19bb87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe7bd51349dd74c7bfd7622e9c906f53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#afe7bd51349dd74c7bfd7622e9c906f53">CreateProgram</a> (<a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;unit)</td></tr>
+<tr class="memdesc:afe7bd51349dd74c7bfd7622e9c906f53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create training program from given settings.  <a href="#afe7bd51349dd74c7bfd7622e9c906f53">More...</a><br /></td></tr>
 <tr class="separator:afe7bd51349dd74c7bfd7622e9c906f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae78482783bbdbd0f73b259a6bf30bc7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#ae78482783bbdbd0f73b259a6bf30bc7e">Print</a> ()</td></tr>
+<tr class="memdesc:ae78482783bbdbd0f73b259a6bf30bc7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper printing the training program to current log output.  <a href="#ae78482783bbdbd0f73b259a6bf30bc7e">More...</a><br /></td></tr>
 <tr class="separator:ae78482783bbdbd0f73b259a6bf30bc7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4aabf81f7990a1145da88d9a136a5ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#af4aabf81f7990a1145da88d9a136a5ae">SaveCsv</a> (wxString const &amp;filename)</td></tr>
+<tr class="memdesc:af4aabf81f7990a1145da88d9a136a5ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save training program in Comma Separated Value file.  <a href="#af4aabf81f7990a1145da88d9a136a5ae">More...</a><br /></td></tr>
 <tr class="separator:af4aabf81f7990a1145da88d9a136a5ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8939e28f1779e682423f53a716d6e4eb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; int &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a8939e28f1779e682423f53a716d6e4eb">GetTrainingTypePerWeekDay</a> ()</td></tr>
+<tr class="memdesc:a8939e28f1779e682423f53a716d6e4eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of instances for each training type for each weekday.  <a href="#a8939e28f1779e682423f53a716d6e4eb">More...</a><br /></td></tr>
 <tr class="separator:a8939e28f1779e682423f53a716d6e4eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -116,14 +124,16 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ad81f92f72e85a45eecc0350004ced4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3869d4e2e092fdfd7dd689c3d656c290"><td class="memItemLeft" align="right" valign="top">wxDateTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a3869d4e2e092fdfd7dd689c3d656c290">startTime</a></td></tr>
 <tr class="separator:a3869d4e2e092fdfd7dd689c3d656c290"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27095119ff87a0f2fed1626f59279782"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, wxString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a27095119ff87a0f2fed1626f59279782">distanceString</a></td></tr>
-<tr class="separator:a27095119ff87a0f2fed1626f59279782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b8a2e36ef32306807c982d670cc5d2"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, wxString &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a52b8a2e36ef32306807c982d670cc5d2">distanceString</a></td></tr>
+<tr class="separator:a52b8a2e36ef32306807c982d670cc5d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a151830fb7a5000ddea05eff84077d8b9"><td class="memItemLeft" align="right" valign="top">wxTextFile&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a151830fb7a5000ddea05eff84077d8b9">textFile</a></td></tr>
 <tr class="separator:a151830fb7a5000ddea05eff84077d8b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11a85bbe234c17a32e5e61867951e15a"><td class="memItemLeft" align="right" valign="top">wxArrayInt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_plan.html#a11a85bbe234c17a32e5e61867951e15a">weekDayOrder</a></td></tr>
 <tr class="separator:a11a85bbe234c17a32e5e61867951e15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A training plan. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a031ab495af5a99a883be2e09860086f1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a031ab495af5a99a883be2e09860086f1">&#9670;&nbsp;</a></span>Plan() <span class="overload">[1/2]</span></h2>
 
@@ -138,6 +148,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default constructor. </p>
 
 </div>
 </div>
@@ -179,26 +191,20 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">distance</td><td>Competition distance </td></tr>
+    <tr><td class="paramname">level</td><td>Traing plan level </td></tr>
+    <tr><td class="paramname">date</td><td>Competition date </td></tr>
+    <tr><td class="paramname">weekDayOrder</td><td>Which weekdays to have long runs, rest, intervals etc. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9a9987e68be81398a51b97cd3cfbb2d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a9987e68be81398a51b97cd3cfbb2d7">&#9670;&nbsp;</a></span>CreatePlan()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Plan::CreatePlan </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="afe7bd51349dd74c7bfd7622e9c906f53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe7bd51349dd74c7bfd7622e9c906f53">&#9670;&nbsp;</a></span>CreateProgram()</h2>
 
@@ -214,6 +220,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Create training program from given settings. </p>
+<p>Internally calls CreatePlan, which calls SetPlan. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unit</td><td>Unit of distance (km|miles) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -255,6 +269,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Create training/activity from string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sTraining</td><td>Input string </td></tr>
+    <tr><td class="paramname">sIntensity</td><td>Output intensity </td></tr>
+    <tr><td class="paramname">day</td><td>Day </td></tr>
+    <tr><td class="paramname">training</td><td>Training/activity </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a263f97c931f4acfdd57acee9a2a225fd"></a>
@@ -273,6 +298,15 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get training for this day. </p>
+<p>Possibly two trainings so a list is returned </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">day</td><td>Input day </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="struct_training.html" title="A training/activity. ">Training(s)</a> for this day </dd></dl>
+
 </div>
 </div>
 <a id="a8939e28f1779e682423f53a716d6e4eb"></a>
@@ -290,6 +324,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get number of instances for each training type for each weekday. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector with seven entries, one per weekday starting with Monday. The entries are vectors with number of instances for each of the training types </dd></dl>
+
 </div>
 </div>
 <a id="ae78482783bbdbd0f73b259a6bf30bc7e"></a>
@@ -306,6 +343,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Helper printing the training program to current log output. </p>
 
 </div>
 </div>
@@ -325,23 +364,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="ab2be9c5575ae6d7dce7efa492e32cc92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab2be9c5575ae6d7dce7efa492e32cc92">&#9670;&nbsp;</a></span>SetPlan()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Plan::SetPlan </td>
-          <td>(</td>
-          <td class="paramtype">wxString const &amp;&#160;</td>
-          <td class="paramname"><em>s</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Save training program in Comma Separated Value file. </p>
+<p>This file can be imported in e.g. Google Calendar. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>Output file name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True on success </dd></dl>
 
 </div>
 </div>
@@ -359,6 +389,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Convert this plan to a string. </p>
+<dl class="section return"><dt>Returns</dt><dd>plan as a string </dd></dl>
 
 </div>
 </div>
@@ -391,14 +424,14 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a27095119ff87a0f2fed1626f59279782"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a27095119ff87a0f2fed1626f59279782">&#9670;&nbsp;</a></span>distanceString</h2>
+<a id="a52b8a2e36ef32306807c982d670cc5d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52b8a2e36ef32306807c982d670cc5d2">&#9670;&nbsp;</a></span>distanceString</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;int,wxString&gt; Plan::distanceString</td>
+          <td class="memname">std::map&lt;int, wxString&gt; Plan::distanceString</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -188,3 +188,16 @@ void MyFrame::OnUpdateFullscreen( wxUpdateUIEvent &e )
 {
     e.Check(IsFullScreen());
 }
+
+void MyFrame::SetAuiManager(boost::shared_ptr<wxAuiManager> otherAuiManager)
+{
+    auiManager = otherAuiManager;
+    if (auiManager) {
+        auiManager->SetManagedWindow(this);
+    }
+}
+
+boost::shared_ptr<wxAuiManager> MyFrame::GetAuiManager() const
+{
+    return auiManager;
+}

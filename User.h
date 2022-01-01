@@ -6,10 +6,11 @@
 
 class User;
 
-//! Smart pointer to a user
-typedef boost::shared_ptr<User> UserPtr;
+typedef boost::shared_ptr<User> UserPtr; //!< Smart pointer to a user
 
-/** A user has all the properties needed for defining a training plan.*/
+/**
+ * @brief A user has all the properties needed for defining a training plan.
+*/
 class User {
 public:
     User();

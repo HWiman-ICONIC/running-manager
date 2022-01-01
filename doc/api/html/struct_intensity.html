@@ -73,19 +73,27 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>An <a class="el" href="struct_intensity.html" title="An Intensity is a specific intensity of a TrainingType. ">Intensity</a> is a specific intensity of a <a class="el" href="struct_training_type.html" title="Type of training. ">TrainingType</a>.  
+ <a href="struct_intensity.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_intensity_8h_source.html">Intensity.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:add48ac7043bc4d297a38d0a3a9227b6b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_intensity.html#add48ac7043bc4d297a38d0a3a9227b6b">Intensity</a> (int <a class="el" href="struct_intensity.html#afed89e14663971d899f4ad538184c477">intensity</a>)</td></tr>
+<tr class="memdesc:add48ac7043bc4d297a38d0a3a9227b6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#add48ac7043bc4d297a38d0a3a9227b6b">More...</a><br /></td></tr>
 <tr class="separator:add48ac7043bc4d297a38d0a3a9227b6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace28ccf496398a824bb132715a78158e"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_intensity.html#ace28ccf496398a824bb132715a78158e">~Intensity</a> ()</td></tr>
+<tr class="memdesc:ace28ccf496398a824bb132715a78158e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#ace28ccf496398a824bb132715a78158e">More...</a><br /></td></tr>
 <tr class="separator:ace28ccf496398a824bb132715a78158e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66abda35b16686ea7661209b300f3305"><td class="memItemLeft" align="right" valign="top">virtual wxString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_intensity.html#a66abda35b16686ea7661209b300f3305">ToString</a> (<a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;outUnit)</td></tr>
+<tr class="memdesc:a66abda35b16686ea7661209b300f3305"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns string with human readable intenisty information.  <a href="#a66abda35b16686ea7661209b300f3305">More...</a><br /></td></tr>
 <tr class="separator:a66abda35b16686ea7661209b300f3305"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74e812dd06aba5b151a1b2b519915636"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_intensity.html#a74e812dd06aba5b151a1b2b519915636">GetTime</a> (wxTimeSpan &amp;minTime, wxTimeSpan &amp;maxTime, wxTimeSpan &amp;avgSpan)</td></tr>
+<tr class="memdesc:a74e812dd06aba5b151a1b2b519915636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get min, max and average total times for this intensity.  <a href="#a74e812dd06aba5b151a1b2b519915636">More...</a><br /></td></tr>
 <tr class="separator:a74e812dd06aba5b151a1b2b519915636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b7eb25befe9327b01a0c0c786ab74a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_intensity.html#a3b7eb25befe9327b01a0c0c786ab74a4">GetDistance</a> (double &amp;minDist, double &amp;maxDist, double &amp;avgDist, <a class="el" href="_defines_8h.html#a8742689db09c00df15df2da8a054f96a">PTUnit</a> const &amp;unit)</td></tr>
+<tr class="memdesc:a3b7eb25befe9327b01a0c0c786ab74a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get min, max and average distances for this intensity.  <a href="#a3b7eb25befe9327b01a0c0c786ab74a4">More...</a><br /></td></tr>
 <tr class="separator:a3b7eb25befe9327b01a0c0c786ab74a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -95,7 +103,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a3c67fd546f513f8bb75c89edf4d6dc79"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="_section_8h.html#a1728d720fe86697923b203c37cbd986c">SectionPtr</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_intensity.html#a3c67fd546f513f8bb75c89edf4d6dc79">section</a></td></tr>
 <tr class="separator:a3c67fd546f513f8bb75c89edf4d6dc79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>An <a class="el" href="struct_intensity.html" title="An Intensity is a specific intensity of a TrainingType. ">Intensity</a> is a specific intensity of a <a class="el" href="struct_training_type.html" title="Type of training. ">TrainingType</a>. </p>
+<p>Each <a class="el" href="struct_training_type.html" title="Type of training. ">TrainingType</a> contains a number of different intensities. Each intensity contains a number of sections, e.g. warm up, foundation and cool down. </p><dl class="section see"><dt>See also</dt><dd>Section <a class="el" href="struct_training_type.html" title="Type of training. ">TrainingType</a> </dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="add48ac7043bc4d297a38d0a3a9227b6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add48ac7043bc4d297a38d0a3a9227b6b">&#9670;&nbsp;</a></span>Intensity()</h2>
 
@@ -111,6 +122,14 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">intensity</td><td><a class="el" href="struct_intensity.html" title="An Intensity is a specific intensity of a TrainingType. ">Intensity</a> number. Higher numbers are more intensive. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -136,6 +155,8 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Destructor. </p>
 
 </div>
 </div>
@@ -178,6 +199,17 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get min, max and average distances for this intensity. </p>
+<p>For all training types except long runs, this requires that pace is registered. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minDist</td><td>Min distance </td></tr>
+    <tr><td class="paramname">maxDist</td><td>Max distance </td></tr>
+    <tr><td class="paramname">avgDist</td><td>Average distance </td></tr>
+    <tr><td class="paramname">unit</td><td>Unit of output distance </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a74e812dd06aba5b151a1b2b519915636"></a>
@@ -212,6 +244,16 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get min, max and average total times for this intensity. </p>
+<p>For long runs, this requires that pace is registered. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minTime</td><td>Min time </td></tr>
+    <tr><td class="paramname">maxTime</td><td>Max time </td></tr>
+    <tr><td class="paramname">avgSpan</td><td>Average time </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a66abda35b16686ea7661209b300f3305"></a>
@@ -237,6 +279,15 @@ Public Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Returns string with human readable intenisty information. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">outUnit</td><td>Unit of output string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string with human readable intenisty information </dd></dl>
 
 </div>
 </div>

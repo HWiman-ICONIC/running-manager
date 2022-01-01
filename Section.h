@@ -6,8 +6,13 @@
 #include	<list>
 
 struct SectionBase;
-typedef boost::shared_ptr<SectionBase> SectionPtr;
+typedef boost::shared_ptr<SectionBase> SectionPtr; //!< Smart pointer to a section
 
+/**
+ * @brief Base class for a section.
+ *
+ * A section is a part of a Training or activity.
+*/
 struct SectionBase {
     SectionBase( PTZone azone ) : zone(azone) {}
     PTZone zone;
@@ -23,6 +28,9 @@ struct SectionBase {
     virtual void GetDistance( double &minDist, double &maxDist, double &avgDist, PTUnit const &unit ) = 0;
 };
 
+/**
+ * @brief A collection of sections, e.g. multiple repetitions of interval/pause
+*/
 struct SectionGroup : public SectionBase {
     SectionGroup( PTZone zone, int nRepetitions );
     virtual wxString ToString(PTUnit const &outUnit, bool bZone=true, bool bTime = true);
@@ -31,6 +39,9 @@ struct SectionGroup : public SectionBase {
     void GetDistance( double &minDist, double &maxDist, double &avgDist, PTUnit const &unit );
 };
 
+/**
+ * @brief A section defined by a distance
+*/
 struct SectionDistance : public SectionBase {
     SectionDistance(PTZone zone, double distance, PTUnit unit);
 
@@ -42,6 +53,9 @@ struct SectionDistance : public SectionBase {
     void GetDistance( double &minDist, double &maxDist, double &avgDist, PTUnit const &unit );
 };
 
+/**
+ * @brief A section defined by a time/duration
+*/
 struct SectionTime : public SectionBase {
     SectionTime(PTZone zone, wxTimeSpan time) :
         SectionBase(zone) {

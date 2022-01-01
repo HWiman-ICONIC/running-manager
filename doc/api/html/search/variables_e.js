@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['weekdayorder',['weekDayOrder',['../struct_plan.html#a11a85bbe234c17a32e5e61867951e15a',1,'Plan']]],
-  ['weeks',['weeks',['../struct_plan.html#a2b1c53992cb1ca5e85f0a39c9d9e7c2d',1,'Plan']]]
+  ['zone',['zone',['../struct_section_base.html#ad15bd8ae643fecf87638286320b722c4',1,'SectionBase::zone()'],['../struct_zone.html#abfc929ad0949e86b31be39237a3d3d3e',1,'Zone::zone()']]]
 ];

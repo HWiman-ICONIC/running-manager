@@ -1,6 +1,11 @@
 #include	<Training.h>
 #include	<TrainingType.h>
 
+bool Training::compareDate(const Training& a, const Training& b)
+{
+    return a.date < b.date;
+}
+
 wxString Training::ToString(bool includeDate, PTUnit const &unit)
 {
     wxString s;

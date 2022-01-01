@@ -73,6 +73,9 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Grid which can change order of columns.  
+ <a href="class_drag_grid.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="_week_day_8h_source.html">WeekDay.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DragGrid:</div>
@@ -86,14 +89,19 @@ Inheritance diagram for DragGrid:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab8647549579a673f077cca9dbb96c20c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drag_grid.html#ab8647549579a673f077cca9dbb96c20c">DragGrid</a> (wxWindow *parent, wxWindowID id, wxButton *<a class="el" href="class_drag_grid.html#a6300eea7ee3a1da0db6df47be66e162a">createButton</a>)</td></tr>
+<tr class="memdesc:ab8647549579a673f077cca9dbb96c20c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#ab8647549579a673f077cca9dbb96c20c">More...</a><br /></td></tr>
 <tr class="separator:ab8647549579a673f077cca9dbb96c20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a887ca37101986ec6925aacaadadd461a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drag_grid.html#a887ca37101986ec6925aacaadadd461a">OnColumnMoved</a> (wxGridEvent &amp;e)</td></tr>
+<tr class="memdesc:a887ca37101986ec6925aacaadadd461a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle a column darg event.  <a href="#a887ca37101986ec6925aacaadadd461a">More...</a><br /></td></tr>
 <tr class="separator:a887ca37101986ec6925aacaadadd461a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30efe75881831ee9a8ccef194c63604c"><td class="memItemLeft" align="right" valign="top">wxArrayInt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drag_grid.html#a30efe75881831ee9a8ccef194c63604c">GetColumnOrder</a> ()</td></tr>
+<tr class="memdesc:a30efe75881831ee9a8ccef194c63604c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current order of the columns.  <a href="#a30efe75881831ee9a8ccef194c63604c">More...</a><br /></td></tr>
 <tr class="separator:a30efe75881831ee9a8ccef194c63604c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d18ced3c9ef9f5749626d403a9b3020"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drag_grid.html#a7d18ced3c9ef9f5749626d403a9b3020">SetColumnOrder</a> (wxArrayInt order)</td></tr>
+<tr class="memdesc:a7d18ced3c9ef9f5749626d403a9b3020"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set current order of columns.  <a href="#a7d18ced3c9ef9f5749626d403a9b3020">More...</a><br /></td></tr>
 <tr class="separator:a7d18ced3c9ef9f5749626d403a9b3020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45cbb6d9aeb6bc7f8d57f105d765c083"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drag_grid.html#a45cbb6d9aeb6bc7f8d57f105d765c083">OnPaint</a> (wxPaintEvent &amp;e)</td></tr>
+<tr class="memdesc:a45cbb6d9aeb6bc7f8d57f105d765c083"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refresh this panel.  <a href="#a45cbb6d9aeb6bc7f8d57f105d765c083">More...</a><br /></td></tr>
 <tr class="separator:a45cbb6d9aeb6bc7f8d57f105d765c083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -103,7 +111,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a6300eea7ee3a1da0db6df47be66e162a"><td class="memItemLeft" align="right" valign="top">wxButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_drag_grid.html#a6300eea7ee3a1da0db6df47be66e162a">createButton</a></td></tr>
 <tr class="separator:a6300eea7ee3a1da0db6df47be66e162a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Grid which can change order of columns. </p>
+<p>USe to change which week days long runs, intervals etc are on. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab8647549579a673f077cca9dbb96c20c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab8647549579a673f077cca9dbb96c20c">&#9670;&nbsp;</a></span>DragGrid()</h2>
 
@@ -136,6 +147,16 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">parent</td><td>Parent </td></tr>
+    <tr><td class="paramname">id</td><td>Window ID </td></tr>
+    <tr><td class="paramname">createButton</td><td>Button for updating according to current drag state </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -153,6 +174,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Return the current order of the columns. </p>
+<dl class="section return"><dt>Returns</dt><dd>current order of the columns </dd></dl>
 
 </div>
 </div>
@@ -172,6 +196,14 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Handle a column darg event. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a45cbb6d9aeb6bc7f8d57f105d765c083"></a>
@@ -190,6 +222,14 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Refresh this panel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>event </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a7d18ced3c9ef9f5749626d403a9b3020"></a>
@@ -207,6 +247,14 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set current order of columns. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">order</td><td>current order of columns </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

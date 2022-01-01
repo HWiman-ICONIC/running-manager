@@ -9,6 +9,9 @@
 #include	<wx/grid.h>
 #include	<wx/stattext.h>
 
+/**
+ * @brief RunningManager namespace
+*/
 namespace rm {
 /**
  * @brief GUI for predictor and unit conversion

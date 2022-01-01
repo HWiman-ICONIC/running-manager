@@ -3,8 +3,26 @@
 #include	<Defines.h>
 #include	<boost/shared_array.hpp>
 
+/**
+ * @brief Zones.
+ *
+ * A zone is defined by a heart rate interval, speed interval and/or feeling.
+ * @todo Enable defining zones with boost property_tree and xml
+*/
 struct Zone {
+    /**
+     * @brief Constructor
+    */
     Zone() {}
+
+    /**
+     * @brief Constructor
+     * @param zone Zone
+     * @param shortName Human readable name
+     * @param description Human readable description of feeling
+     * @param minPercent Min heart rate
+     * @param maxPercent Max heart rate
+    */
     Zone(PTZone zone, wxString shortName, wxString description, double minPercent, double maxPercent);
 
     PTZone zone;
