@@ -416,14 +416,12 @@ bool MyApp::OnInit()
     weekDayControl = new WeekDay(frame, *plan);
 
     // Create the webview
-    wxString url("http://amzn.com/0451470885");
+//    wxString url("http://amzn.com/0451470885");
 //	wxString url("http://www.jogg.se");
-//	wxString url("http://www.mattfitzgerald.org/books");
+//    wxString url("http://www.mattfitzgerald.org/books");
+    wxString url("https://www.amazon.com/80-20-Running-Stronger-Training-ebook/dp/B00IIVFAEY");
 #if wxUSE_WEBVIEW
-
     wxWebView *webView = wxWebView::New(frame, wxID_ANY, url);
-
-//	WebView *webView = new WebView( frame,  );
 #endif
 
     rm::Calculator *pCalculator = new rm::Calculator( frame );

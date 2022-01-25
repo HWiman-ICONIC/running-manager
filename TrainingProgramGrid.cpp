@@ -77,7 +77,7 @@ int TrainingProgramGrid::GetRow( wxDateTime const & date )
 {
     wxString sdate = date.FormatISODate();
     for (int i=0; i< this->GetNumberRows(); i++) {
-        if (sdate.CompareTo(this->GetCellValue(i,0))==0) {
+        if (sdate.IsSameAs(this->GetCellValue(i,0))==0) {
             return i;
         }
     }
