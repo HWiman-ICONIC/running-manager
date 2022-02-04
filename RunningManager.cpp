@@ -339,7 +339,7 @@ bool MyApp::OnInit()
         vZoneMap[i] = gZoneMap[i];
     }
 
-    frame = new MyFrame("RunningManager v1.7", wxFileName::GetCwd());
+    frame = new MyFrame("RunningManager v1.8", wxFileName::GetCwd());
     frame->SetAuiManager(boost::make_shared<wxAuiManager>());
     frame->SetBackgroundColour(wxColour(255, 255, 255));
     frame->Maximize();
@@ -419,7 +419,8 @@ bool MyApp::OnInit()
 //    wxString url("http://amzn.com/0451470885");
 //	wxString url("http://www.jogg.se");
 //    wxString url("http://www.mattfitzgerald.org/books");
-    wxString url("https://www.amazon.com/80-20-Running-Stronger-Training-ebook/dp/B00IIVFAEY");
+//    wxString url("https://www.amazon.com/80-20-Running-Stronger-Training-ebook/dp/B00IIVFAEY");
+    wxString url("https://shop.aer.io/Matt_Fitzgerald/p/title/9780451470881-416");
 #if wxUSE_WEBVIEW
     wxWebView *webView = wxWebView::New(frame, wxID_ANY, url);
 #endif

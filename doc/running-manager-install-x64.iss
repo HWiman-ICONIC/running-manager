@@ -3,9 +3,9 @@
 
 [Setup]
 AppName=RunningManager
-AppVerName=RunningManager 1.7
-AppVersion=1.7
-AppCopyright=©2021 Håkan Wiman
+AppVerName=RunningManager 1.8
+AppVersion=1.8
+AppCopyright=©2022 Håkan Wiman
 AppPublisher=Håkan Wiman
 AppPublisherURL=http://www.wiman.nu/rm
 AppSupportURL=http://www.wiman.nu/rm
@@ -16,10 +16,10 @@ Compression=lzma
 SolidCompression=true
 WizardImageFile=sample.bmp
 UninstallDisplayIcon={app}\RunningManager.exe
-VersionInfoVersion=1.7
+VersionInfoVersion=1.8
 VersionInfoCompany=Håkan Wiman
 VersionInfoDescription=RunningManager Setup
-VersionInfoTextVersion=1, 7
+VersionInfoTextVersion=1, 8
 LicenseFile=license.txt
 ArchitecturesInstallIn64BitMode=x64
 ArchitecturesAllowed=x64
